@@ -12,7 +12,37 @@ import ComputerDesktop from "./images/computer-desktop.png"
 import Development from "./images/development.png"
 import Puzzle from "./images/puzzle.png"
 import CV from "./images/cvScreenshot.png"
-import Download from "./images/download.png"
+import React from 'react';
+import Banner from "./banner";
+import Html from "./images/HTML5.png"
+import Spring from "./images/spring.png"
+import Angular from "./images/angular-logo.png"
+import Java from "./images/java2.webp"
+import TailwindCss from "./images/tailwind.png"
+import Css from "./images/CSS3.png"
+import AspNet from "./images/asp.net.png"
+import type { StaticImageData } from 'next/image'; 
+
+
+interface Logo {
+  id: string;
+  src: string | StaticImageData; 
+  alt: string;
+}
+
+// Arrays of the logos of the infinite banner of technologies
+const images = [
+  { id: crypto.randomUUID(), src: Html, alt: 'HTML5 Logo' },
+  { id: crypto.randomUUID(), src: Spring, alt: 'Spring Logo' },
+  { id: crypto.randomUUID(), src: Angular, alt: 'Angular Logo' },
+  { id: crypto.randomUUID(), src: Java, alt: 'Java Logo' },
+  { id: crypto.randomUUID(), src: TailwindCss, alt: 'Tailwind CSS Logo' },
+  { id: crypto.randomUUID(), src: Css, alt: 'CSS3 Logo' },
+  { id: crypto.randomUUID(), src: AspNet, alt: 'ASP.NET Logo' },
+].map((image) => ({
+  id: crypto.randomUUID(),
+  image
+}));
 
 export default function Home() {
   return (
@@ -132,13 +162,15 @@ export default function Home() {
 
 
         {/* TECHNOLOGIES SECTION */}
-        <div className="bg-white w-full h-36">
+        <div className="bg-white w-full h-full py-28"> 
+          <div>
+            
+          <Banner images={images} speed={5000} /> 
 
+          </div>
         </div>
 
-
         {/* PROJECTS SECTION */}
-        {/* SKILLSET SECTION */}
         <div className="w-full flex border-right h-full ">
 
           <div className="bg-custom-purple w-1/4 flex justify-center text-white">
@@ -147,7 +179,7 @@ export default function Home() {
 
           <div className="bg-custom-purple w-3/4 h-full px-10 py-28">
 
-          {/* SKILLSET GRID */}
+          {/* PROJECTS GRID */}
           <div className="container m-auto grid grid-cols-2 grid-rows-3 gap-14">
             <div className="bg-white aspect-square rounded-md shadow-lg">
               
@@ -159,7 +191,7 @@ export default function Home() {
               
             </div>
             <div className="bg-white aspect-square rounded-md shadow-lg">
-              d
+              
             </div>
             <div className="bg-white aspect-square rounded-md shadow-lg">
               
@@ -201,6 +233,64 @@ export default function Home() {
         </div>
 
         {/* CONTACT SECTION */}
+        <div className="w-full flex border-right h-full ">
+
+          <div className="bg-custom-purple w-1/4 flex justify-center text-white">
+            <p className="-rotate-90 flex items-center text-7xl whitespace-nowrap">Let’s connect.</p>
+          </div>
+
+          <div className="bg-custom-purple w-3/4 h-full px-10 py-28">
+            <p className="pb-10">If you are interested to work with me, feel free to send me a message!</p>
+          <form action="#" className="space-y-8">
+          <div>
+              <label className="block mb-2 text-md font-medium text-white">Name</label>
+              <input type="text" id="name" className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 " required/>
+          </div>
+          <div>
+              <label className="block mb-2 text-md font-medium text-white">Your email</label>
+              <input type="email" id="email" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 " required/>
+          </div>
+          
+          <div className="sm:col-span-2">
+              <label className="block mb-2 text-md font-medium text-white ">Your message</label>
+              <textarea id="message" rows={6} className="block p-2.5 w-full text-md bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 "></textarea>
+          </div>
+          <button className="cta flex items-baseline">
+            <span className="hover-underline-animation"> Send </span>
+            <svg
+              id="arrow-horizontal"
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="10"
+              viewBox="0 0 46 16"
+            >
+              <path
+                id="Path_10"
+                data-name="Path 10"
+                d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                transform="translate(30)"
+              ></path>
+            </svg>
+          </button>
+      </form>
+          
+          
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
         </div>
         
       </div>
