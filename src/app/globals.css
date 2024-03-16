@@ -131,43 +131,162 @@ body {
 
 /* Technologies slide */
 .img-banner {
-  max-width: 50px;
-  height: 5rem;
-  padding: 0 15px;
-  object-fit: cover;
+height:150px;
+width:auto;
+object-fit: contain;
 }
 
 .img-banner:last-of-type {
   padding-left: 0;
 }
 
+#html, #css {
+scale:50%
+}
+
+ #java {
+  scale:130%;
+}
+
+#tailwind, #angular, #spring, #asp {
+  scale:150%;
+}
+
+#spring {
+  padding-right:15%;
+}
+
+#angular {
+  padding-left:15%;
+}
+
 .inner-banner {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  height: 5rem;
+  height:200px;
+ 
+  left:0;
+  display: flex;
 }
 
 .wrapper-banner {
+  position: relative;
   display: flex;
-  flex-wrap: nowrap;
+  gap:4rem;
+  height:200px;
+  width:100vw;
 }
 
 section {
+  width:100vw;
   display: flex;
-  animation: swipe var(--speed) linear infinite backwards;
+  justify-content: space-around;
+  animation: swipe var(--speed) linear infinite;
 }
 
 @keyframes swipe {
   0% {
-    transform: translate(0);
+    transform: translateX(0);
   }
 
   100% {
-    transform: translate(-100%);
+    transform: translateX(-50%);
   }
 }
 
+/* Project Gifs */
+.bg-petCare {
+  background-image: url('images/FramePetCare.png');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.bg-petCare:hover {
+  background-image: url('gifs/PetCareTracker.gif');
+}
+
+
+.bg-cliniqueClic {
+  background-image: url('images/FrameClinique.png');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.bg-cliniqueClic:hover {
+  background-image: url('gifs/CliniqueClic.gif');
+}
+
+.bg-lePendu {
+  background-image: url('images/FramePendu.png');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.bg-lePendu:hover {
+  background-image: url('gifs/LePendu.gif');
+}
+
+.bg-gradeFlow {
+  background-image: url('images/FrameGradeflow.png');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.bg-gradeFlow:hover {
+  background-image: url('gifs/GradeFlow.gif');
+}
+
+.bg-lalalandYoga {
+  background-image: url('images/FrameLalaland.png');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.bg-lalalandYoga:hover {
+  background-image: url('gifs/LalalandYoga.gif');
+}
+
+.bg-parrotMentor {
+  background-image: url('images/FrameParrot.png');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.bg-parrotMentor:hover {
+  background-image: url('gifs/ParrotMentor.gif');
+}
+
+/* Slide Panel Header */
+.slide-pane__header{
+  background-color: #ac8bf1 !important;
+}
+
+/* Slide Panel Content */
+.slide-pane__content{
+  background-color: #ececec !important;
+}
+
+/* Slide Panel Close Button */
+.slide-pane__close {
+  color: white !important;
+}
+
+/* Slide Panel Title */
+.slide-pane__title {
+  color: white !important;
+  font-size: medium !important;
+  font-weight: none !important;
+}
 
 
 @layer utilities {
