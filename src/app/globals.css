@@ -131,7 +131,7 @@ body {
 
 /* Technologies slide */
 .img-banner {
-height:150px;
+height:200px;
 width:auto;
 object-fit: contain;
 }
@@ -141,15 +141,15 @@ object-fit: contain;
 }
 
 #html, #css {
-scale:50%
+scale:70%
 }
 
- #java {
+ #java, #thymeleaf {
   scale:130%;
 }
 
 #tailwind, #angular, #spring, #asp {
-  scale:150%;
+  scale:170%;
 }
 
 #spring {
@@ -160,9 +160,19 @@ scale:50%
   padding-left:15%;
 }
 
+#javascript {
+  scale:70%
+}
+
+#bootstrap, #typescript, #wpf {
+  scale:65%;
+}
+
+#entity, #react, #oracle, #mysql {
+  scale:120%;
+}
+
 .inner-banner {
-  height:200px;
- 
   left:0;
   display: flex;
 }
@@ -172,11 +182,11 @@ scale:50%
   display: flex;
   gap:4rem;
   height:200px;
-  width:100vw;
+
 }
 
 section {
-  width:100vw;
+  width:100px;
   display: flex;
   justify-content: space-around;
   animation: swipe var(--speed) linear infinite;
@@ -291,4 +301,92 @@ section {
 
 @layer utilities {
 
+}
+
+
+/* Looper styles */
+@keyframes slideAnim {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.looper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.looper__innerList {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+}
+
+.looper__innerList[data-animate="true"] .looper__listInstance {
+  animation: slideAnim linear infinite;   
+}
+
+.looper__listInstance {
+  display: flex;
+  width: max-content;
+  height:100%;
+  animation: none;
+}
+
+.contentBlock-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 16px; 
+  font-weight: 600;
+  text-align: center;
+}
+
+.contentBlock-techs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.contentBlock--one {  
+  width: 120px;
+  background: rgba(255, 255, 255, 0.05);    
+  font-weight: 600;
+  font-size: 18px; 
+}
+.contentBlock--one:last-of-type {
+  color: var(--green);
+  margin-right: 36px;
+}
+.contentBlock--two {    
+  color: var(--green);  
+  font-size: 48px;
+  background: rgba(255, 255, 255, 0.05);  
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #AC8BF1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

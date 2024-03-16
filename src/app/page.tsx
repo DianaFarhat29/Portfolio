@@ -13,7 +13,6 @@ import ComputerDesktop from "./images/computer-desktop.png";
 import Development from "./images/development.png";
 import Puzzle from "./images/puzzle.png";
 import CV from "./images/cvScreenshot.png";
-import Banner from "./banner";
 import Html from "./images/HTML5.png";
 import Spring from "./images/spring.png";
 import Angular from "./images/angular-logo.png";
@@ -35,7 +34,6 @@ import WPF from "./images/wpf.png";
 import WindowsForm from "./images/winforms.png";
 import Thymeleaf from "./images/thymeleaf.png";
 import React, { Component, useState } from "react";
-import { render } from "react-dom";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import PetCareGif from "./gifs/PetCareTracker.gif";
@@ -45,10 +43,8 @@ import CliniqueClicGif from "./gifs/CliniqueClic.gif";
 import ParrotMentorGif from "./gifs/ParrotMentor.gif";
 import LalalandYogaGif from "./gifs/LalalandYoga.gif";
 import Website from "./images/website.png";
-import { Carousel } from 'flowbite-react';
-
-
-
+import InfiniteLooper from "./infiniteLooper";
+import emailjs from 'emailjs-com';
 
 // Arrays of the logos of the infinite banner of technologies
 const images = [
@@ -75,23 +71,20 @@ const images = [
   image,
 }));
 
-const html5= {color:"html", text:"HTML5"};
-const angular= {color:"angular", text:"Angular"};
-const typescript= {color:"typescript", text:"Typescript"};
-const spring= {color:"spring", text:"Spring Boot"};
-const mysql= {color:"mysql", text:"MySQL"};
-const bootstrap= {color:"bootstrap", text:"Bootstrap5"};
-const wpf= {color:"wpf", text:"WPF"};
-const csharp= {color:"csharp", text:"C#"};
-const entityFramework= {color:"entity", text:"Entity Framework"};
-const tailwindCss= {color:"tailwind", text:"Tailwind CSS"};
-const javascript= {color:"javascript", text:"Javascript"};
-const java= {color:"java", text:"Java"};
-const thymeleaf= {color:"thymeleaf", text:"Thymeleaf"};
-const windowsForm= {color:"windowsforms", text:"Windows Forms"};
-
-
-
+const html5 = { color: "bg-html-color", text: "HTML5" };
+const angular = { color: "bg-angular-color", text: "Angular" };
+const typescript = { color: "bg-typescript-color", text: "Typescript" };
+const spring = { color: "bg-spring-color", text: "Spring Boot" };
+const mysql = { color: "bg-mysql-color", text: "MySQL" };
+const bootstrap = { color: "bg-bootstrap-color", text: "Bootstrap5" };
+const wpf = { color: "bg-wpf-color", text: "WPF" };
+const csharp = { color: "bg-csharp-color", text: "C#" };
+const entityFramework = { color: "bg-entity-color", text: "Entity Framework" };
+const tailwindCss = { color: "bg-tailwind-color", text: "Tailwind CSS" };
+const javascript = { color: "bg-javascript-color", text: "Javascript" };
+const java = { color: "bg-java-color", text: "Java" };
+const thymeleaf = { color: "bg-thymeleaf-color", text: "Thymeleaf" };
+const windowsForm = { color: "bg-windowsforms-color", text: "Windows Forms" };
 
 const petCare = {
   title: "PetCare Tracker",
@@ -119,7 +112,15 @@ const gradeFlow = {
     "A web-based student management web application using Java, Spring, Thymeleaf, HTML, Tailwind CSS and Javascript. It featuring user authentication and course/grade management.",
   gif: GradeFlowGif,
   github: "https://github.com/DianaFarhat29/GradeFlow.git",
-  technologies: [html5, tailwindCss, javascript, java, spring, thymeleaf, mysql],
+  technologies: [
+    html5,
+    tailwindCss,
+    javascript,
+    java,
+    spring,
+    thymeleaf,
+    mysql,
+  ],
   website: "",
 };
 
@@ -139,7 +140,7 @@ const parrotMentor = {
     "A Windows Forms application in C#, managing teaching establishments, students, and programs.",
   gif: ParrotMentorGif,
   github: "https://github.com/DianaFarhat29/ParrotMentor.git",
-  technologies: [windowsForm,csharp],
+  technologies: [windowsForm, csharp],
   website: "",
 };
 
@@ -160,11 +161,25 @@ export default function Home() {
 
   const [selectedProject, setSelectedProject] = useState(petCare);
 
+  const [sendText, setSendText] = useState("Send");
+
+  function sendEmail(event : any) {
+    event.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
+
+    emailjs.sendForm('service_le7h5bq', 'template_oh36xyg', event.target, 'h18n34H5pvggDSR7I')
+      .then((result) => {
+        event.target.reset(); 
+        setSendText("Sent!");
+      }, (error) => {
+        setSendText("Oops, something wrong happened. Send again?");
+      });
+  }
+
   return (
     <main className="w-full h-full ">
       {/* ================================================== NAV BAR ================================================== */}
-      <nav className=" flex flex-row text-center h-24">
-        <ul className="flex justify-center items-center text-center w-full gap-2 ">
+      <nav className=" flex flex-row text-center h-24  bg-white w-full justify-center items-center">
+        <ul className="flex justify-center items-center text-center w-fit gap-2 fixed p-2 px-5 bg-white rounded-2xl z-30">
           <li className="hover:text-custom-purple transition-all duration-200">
             <a href="#aboutMe">About Me</a>
           </li>
@@ -179,24 +194,24 @@ export default function Home() {
         </ul>
       </nav>
 
-      <div className="w-full flex flex-row-reverse justify-start">
+      <div className=" flex flex-row-reverse w-full">
         {/* ================================================== RIGTH BAR SECTION ================================================== */}
-        <div className="m-4 flex items-center ">
-          <ul className="flex flex-col w-5 gap-5  ">
-            <li className=" transition-all duration-200">
-              <a href="#mail">
-                <Image src={MailImage} alt="mail" />
+        <div className="flex items-center h-full bg-white p-6 justify-center ">
+          <ul className="flex flex-col w-5 gap-5 fixed items-center justify-center bottom-0 top-0 z-50">
+            <li className=" transition-all duration-200 hover:scale-125" >
+              <a href="mailto:diana.farhat@outlook.com">
+                <Image src={MailImage} alt="mail"/>
               </a>
             </li>
 
-            <li className=" transition-all duration-200">
-              <a href="#github">
+            <li className=" transition-all duration-200 hover:scale-125" >
+              <a href="https://github.com/DianaFarhat29">
                 <Image src={Github2} alt="github" />
               </a>
             </li>
 
-            <li className=" transition-all duration-200">
-              <a href="#linkedIn">
+            <li className=" transition-all duration-200 hover:scale-125" >
+              <a href="https://www.linkedin.com/in/diana-farhat/">
                 <Image src={LinkedIn} alt="linkedIn" />
               </a>
             </li>
@@ -257,8 +272,8 @@ export default function Home() {
 
           {/* ================================================== SKILLSET SECTION ================================================== */}
           <div className="w-full flex border-right h-full ">
-            <div className="bg-custom-purple w-1/4 flex justify-center text-white">
-              <p className="-rotate-90 flex items-center text-7xl">Skillset.</p>
+          <div className="bg-custom-purple w-1/4 flex justify-center text-white relative items-center">
+              <p className="-rotate-90 flex items-center text-7xl whitespace-nowrap absolute">Skillset.</p>
             </div>
 
             <div className="bg-white w-3/4 h-full ">
@@ -356,9 +371,18 @@ export default function Home() {
 
           {/* ================================================== TECHNOLOGIES SECTION ================================================== */}
           <div className="bg-white w-full h-full py-28">
-            <div className="w-screen">
-              <Banner images={images} speed={5000} />
-            </div>
+            <InfiniteLooper speed={60} direction="left">
+              {images.map(({ id, image }) => (
+                <div className="contentBlock-banner contentBlock--one">
+                  <Image
+                    id={image.id}
+                    src={image.src}
+                    alt={image.alt}
+                    className="max-h-20 w-auto"
+                  />{" "}
+                </div>
+              ))}
+            </InfiniteLooper>
           </div>
 
           {/* ================================================== PROJECTS SECTION ================================================== */}
@@ -396,7 +420,9 @@ export default function Home() {
                 {selectedProject && (
                   <div className="flex flex-col gap-10">
                     <div className="flex flex-col gap-5 pt-5">
-                      <p className="text-xl font-semibold">{selectedProject.title}</p>
+                      <p className="text-xl font-semibold">
+                        {selectedProject.title}
+                      </p>
                       <Image
                         src={selectedProject.gif}
                         alt=""
@@ -414,7 +440,7 @@ export default function Home() {
                         {selectedProject.technologies.map((technology) => {
                           return (
                             <div
-                              className={`rounded-full text-whites bg-${technology.color}-color py-1 px-3 text-sm shadow-md whitespace-nowrap text-white`}
+                              className={`rounded-full text-whites ${technology.color} py-1 px-3 text-sm shadow-md whitespace-nowrap text-white`}
                             >
                               {" "}
                               {technology.text}{" "}
@@ -441,84 +467,74 @@ export default function Home() {
                         target="blank"
                       >
                         {selectedProject.github}
-              
                       </a>{" "}
                     </div>
 
-                    {selectedProject.website !== "" && ( 
-                    <div className="flex flex-col gap-5 pt-2">
-                      <div className="flex gap-2 items-center">
+                    {selectedProject.website !== "" && (
+                      <div className="flex flex-col gap-5 pt-2">
+                        <div className="flex gap-2 items-center">
+                          <a
+                            href={selectedProject.website}
+                            target="blank"
+                            className="w-6 h-auto"
+                          >
+                            <Image src={Website} alt="" />
+                          </a>{" "}
+                          <p className="font-semibold">Website</p>
+                        </div>
                         <a
                           href={selectedProject.website}
+                          className="text-sm text-gray-500"
                           target="blank"
-                          className="w-6 h-auto"
                         >
-                          <Image src={Website} alt="" />
+                          {selectedProject.website}
                         </a>{" "}
-                        <p className="font-semibold">Website</p>
                       </div>
-                      <a
-                        href={selectedProject.website}
-                        className="text-sm text-gray-500"
-                        target="blank"
-                      >
-                        {selectedProject.website}
-              
-                      </a>{" "}
-                    </div>
-                    )
-                      }
-
-
-                    
-
-
-
+                    )}
                   </div>
-                )
-                      }
-          
+                )}
               </SlidingPane>
 
               <div className=" grid grid-cols-2 grid-flow-row gap-5 w-full pl-14 ">
                 <div className="flex flex-col bg-white rounded-t-md">
-
                   {/* ================================================== PETCARE TRACKER PROJECT ================================================== */}
-                  
+
                   <div
-                    className="bg-white h-64 rounded bg-petCare"
+                    className="bg-white h-64 rounded bg-petCare "
                     onClick={() => {
                       setState({ isPaneOpen: true });
                       setSelectedProject(petCare);
                     }}
                   ></div>
-                  <div className="flex justify-center gap-3 bg-white pb-5 rounded-b-md ">
-                    <div className="flex w-full gap-3">
-                    <Carousel>
+                  <div className="flex justify-center gap-3 bg-white rounded-b-md ">
+                    <div className="flex w-full gap-3 ">
+                      <InfiniteLooper speed={60} direction="left">
                         {petCare.technologies.map((technology) => {
                           return (
-                         
-                            <div
-                              className={`rounded-full w-full text-white bg-${technology.color}-color py-1 px-2 text-xs shadow-md h-fit whitespace-nowrap`}
-                            >         
-                              {technology.text}
+                            <div className="contentBlock-techs contentBlock--one ">
+                              <div
+                                className={`rounded-full w-full text-white ${technology.color} py-1 px-2 text-xs shadow-md h-fit whitespace-nowrap`}
+                              >
+                                {technology.text}
+                              </div>{" "}
                             </div>
                           );
                         })}
-                            </Carousel>
-                      </div>
+                      </InfiniteLooper>
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex flex-col">
-                  <div className="bg-white h-64 bg-lePendu rounded-t-md" 
-                  onClick={() => {
+                  <div
+                    className="bg-white h-64 bg-lePendu rounded-t-md"
+                    onClick={() => {
                       setState({ isPaneOpen: true });
                       setSelectedProject(pendu);
-                    }}></div>
-                  
+                    }}
+                  ></div>
+
                   <div className="flex justify-center gap-2 bg-white pb-5 rounded-b-md">
-                
                     <p className="rounded-full text-white bg-wpf-color py-1 px-2 text-sm">
                       WPF
                     </p>
@@ -532,71 +548,64 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-col">
-                  <div className="bg-white h-64 bg-gradeFlow rounded-t-md"        
-                  onClick={() => {
+                  <div
+                    className="bg-white h-64 bg-gradeFlow rounded-t-md"
+                    onClick={() => {
                       setState({ isPaneOpen: true });
                       setSelectedProject(gradeFlow);
-                    }}></div>
+                    }}
+                  ></div>
+
                   <div className="flex justify-center gap-2 bg-white pb-5 rounded-b-md">
-                    <p className="rounded-full text-white bg-html-color py-1 px-2 text-sm">
-                      HTML5
-                    </p>
-                    <p className="rounded-full text-white bg-tailwind-color py-1 px-2 text-sm whitespace-nowrap">
-                      Tailwind CSS
-                    </p>
-                    <p className="rounded-full text-white bg-javascript-color py-1 px-2 text-sm">
-                      Javascript
-                    </p>
-                    <p className="rounded-full text-white bg-java-color py-1 px-2 text-sm">
-                      Java
-                    </p>
-                    <p className="rounded-full text-white bg-spring-color py-1 px-2 text-sm whitespace-nowrap">
-                      Spring Boot
-                    </p>
-                    <p className="rounded-full text-white bg-thymeleaf-color py-1 px-2 text-sm">
-                      Thymeleaf
-                    </p>
-                    <p className="rounded-full text-white bg-mysql-color py-1 px-2 text-sm">
-                      MySql
-                    </p>
+                    <InfiniteLooper speed={60} direction="left">
+                      {gradeFlow.technologies.map((technology) => {
+                        return (
+                          <div className="contentBlock-techs contentBlock--one ">
+                            <div
+                              className={`rounded-full w-full text-white ${technology.color} py-1 px-2 text-xs shadow-md h-fit whitespace-nowrap`}
+                            >
+                              {technology.text}
+                            </div>{" "}
+                          </div>
+                        );
+                      })}
+                    </InfiniteLooper>
                   </div>
                 </div>
 
                 <div className="flex flex-col">
-                  <div className="bg-white h-64 bg-cliniqueClic rounded-t-md"        onClick={() => {
+                  <div
+                    className="bg-white h-64 bg-cliniqueClic rounded-t-md"
+                    onClick={() => {
                       setState({ isPaneOpen: true });
                       setSelectedProject(cliniqueClic);
-                    }}></div>
+                    }}
+                  ></div>
                   <div className="flex justify-center gap-2 bg-white pb-5 rounded-b-md">
-                    <p className="rounded-full text-white bg-html-color py-1 px-2 text-sm">
-                      HTML5
-                    </p>
-                    <p className="rounded-full text-white bg-bootstrap-color py-1 px-2 text-sm">
-                      Bootstrap
-                    </p>
-                    <p className="rounded-full text-white bg-javascript-color py-1 px-2 text-sm">
-                      Javascript
-                    </p>
-                    <p className="rounded-full text-white bg-java-color py-1 px-2 text-sm">
-                      Java
-                    </p>
-                    <p className="rounded-full text-white bg-spring-color py-1 px-2 text-sm whitespace-nowrap">
-                      Spring Boot
-                    </p>
-                    <p className="rounded-full text-white bg-thymeleaf-color py-1 px-2 text-sm">
-                      Thymeleaf
-                    </p>
-                    <p className="rounded-full text-white bg-mysql-color py-1 px-2 text-sm">
-                      MySql
-                    </p>
+                    <InfiniteLooper speed={60} direction="left">
+                      {cliniqueClic.technologies.map((technology) => {
+                        return (
+                          <div className="contentBlock-techs contentBlock--one ">
+                            <div
+                              className={`rounded-full w-full text-white ${technology.color} py-1 px-2 text-xs shadow-md h-fit whitespace-nowrap`}
+                            >
+                              {technology.text}
+                            </div>{" "}
+                          </div>
+                        );
+                      })}
+                    </InfiniteLooper>
                   </div>
                 </div>
 
                 <div className="flex flex-col">
-                  <div className="bg-white h-64 bg-parrotMentor rounded-t-md"        onClick={() => {
+                  <div
+                    className="bg-white h-64 bg-parrotMentor rounded-t-md"
+                    onClick={() => {
                       setState({ isPaneOpen: true });
                       setSelectedProject(parrotMentor);
-                    }}></div>
+                    }}
+                  ></div>
                   <div className="flex justify-center gap-2 bg-white pb-5 rounded-b-md">
                     <p className="rounded-full text-white bg-windowsforms-color py-1 px-2 text-sm whitespace-nowrap">
                       Windows Forms
@@ -608,10 +617,13 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-col">
-                  <div className="bg-white h-64 bg-lalalandYoga rounded-t-md"        onClick={() => {
+                  <div
+                    className="bg-white h-64 bg-lalalandYoga rounded-t-md"
+                    onClick={() => {
                       setState({ isPaneOpen: true });
                       setSelectedProject(lalalandYoga);
-                    }}></div>
+                    }}
+                  ></div>
                   <div className="flex justify-center gap-2 bg-white pb-5 rounded-b-md">
                     <p className="rounded-full text-white bg-html-color py-1 px-2 text-sm">
                       HTML5
@@ -630,8 +642,8 @@ export default function Home() {
 
           {/* ================================================== CURRICULUM VITAE SECTION ================================================== */}
           <div className="w-full flex h-full">
-            <div className="bg-custom-gray w-1/4 flex justify-center text-custom-purple">
-              <p className="-rotate-90 flex items-center text-7xl whitespace-nowrap">
+            <div className="bg-custom-gray w-1/4 flex justify-center text-custom-purple relative items-center">
+              <p className="-rotate-90 flex items-center text-7xl whitespace-nowrap absolute">
                 Curriculum Vitaea.
               </p>
             </div>
@@ -639,10 +651,9 @@ export default function Home() {
             <div className="bg-custom-gray w-3/4 h-full py-28 flex justify-center">
               <div className="bg-custom-gray w-[85%] shadow-lg relative">
                 <div className="opacity-0 hover:opacity-100 bg-custom-purple bg-opacity-5 backdrop-blur-sm flex cursor-pointer absolute h-full w-full justify-center items-center transition-all duration-200 ease-in-out">
-                  <button className="btn">
+                  <a href="https://drive.google.com/uc?export=download&id=1qUutYykY6EZKtf1v3kLwn80aGYb7AEBU" className="btn" >
                     Download CV
-                    <span></span>
-                  </button>
+                  </a>
                 </div>
 
                 <Image className="rounded-lg" src={CV} alt="cv" />
@@ -652,8 +663,8 @@ export default function Home() {
 
           {/* ================================================== CONTACT SECTION ================================================== */}
           <div className="w-full flex border-right h-full ">
-            <div className="bg-custom-purple w-1/4 flex justify-center text-white">
-              <p className="-rotate-90 flex items-center text-7xl whitespace-nowrap">
+            <div className="bg-custom-purple w-1/4 flex justify-center text-white relative items-center">
+              <p className="-rotate-90 flex items-center text-7xl whitespace-nowrap absolute">
                 Let’s connect.
               </p>
             </div>
@@ -663,12 +674,13 @@ export default function Home() {
                 If you are interested to work with me, feel free to send me a
                 message!
               </p>
-              <form action="#" className="space-y-8">
+              <form onSubmit={sendEmail} className="space-y-8" id="form-email">
                 <div>
                   <label className="block mb-2 text-md text-white">Name</label>
                   <input
                     type="text"
                     id="name"
+                    name="from_name"
                     className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 "
                     required
                   />
@@ -680,6 +692,7 @@ export default function Home() {
                   <input
                     type="email"
                     id="email"
+                    name="from_email"
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
                     required
                   />
@@ -691,12 +704,13 @@ export default function Home() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={6}
                     className="block p-2.5 w-full text-md bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 "
                   ></textarea>
                 </div>
-                <button className="cta flex items-baseline">
-                  <span className="hover-underline-animation"> Send </span>
+                <button className="cta flex items-baseline" type="submit">
+                  <span className="hover-underline-animation"> {sendText} </span>
                   <svg
                     id="arrow-horizontal"
                     xmlns="http://www.w3.org/2000/svg"
