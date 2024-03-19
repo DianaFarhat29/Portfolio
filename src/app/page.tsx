@@ -33,7 +33,7 @@ import Typescript from "./images/typescript.png";
 import WPF from "./images/wpf.png";
 import WindowsForm from "./images/winforms.png";
 import Thymeleaf from "./images/thymeleaf.png";
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import PetCareGif from "./gifs/PetCareTracker.gif";
@@ -45,6 +45,10 @@ import LalalandYogaGif from "./gifs/LalalandYoga.gif";
 import Website from "./images/website.png";
 import InfiniteLooper from "./infiniteLooper";
 import emailjs from 'emailjs-com';
+import { useTranslation } from 'react-i18next';
+
+
+
 
 // Arrays of the logos of the infinite banner of technologies
 const images = [
@@ -163,8 +167,11 @@ export default function Home() {
 
   const [sendText, setSendText] = useState("Send");
 
+
+  const [language, setLanguage] = useState("en");
+
   function sendEmail(event : any) {
-    event.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
+    event.preventDefault();
 
     emailjs.sendForm('service_le7h5bq', 'template_oh36xyg', event.target, 'h18n34H5pvggDSR7I')
       .then((result) => {
@@ -175,13 +182,27 @@ export default function Home() {
       });
   }
 
+  const { t, i18n } = useTranslation();
+
+
+  const handleChangeLanguage = (lang: string | undefined) => {
+    i18n.changeLanguage(lang);
+  };
+
   return (
-    <main className="w-full h-full ">
+    <main className=" w-full h-full ">
+    <div className="absolute right-0 flex gap-2 m-2 mr-10">
+      <button onClick={() => setLanguage('en')} className={`${language == "en" && "font-bold"}`}>EN</button> |
+      <button onClick={() => setLanguage('fr')} className={`${language == "fr" && "font-bold"}`}>FR</button>
+    </div>
+
       {/* ================================================== NAV BAR ================================================== */}
+      {state.isPaneOpen == false && 
+           (
       <nav className=" flex flex-row text-center h-24  bg-white w-full justify-center items-center">
         <ul className="flex justify-center items-center text-center w-fit gap-2 fixed p-2 px-5 bg-white rounded-2xl z-30">
           <li className="hover:text-custom-purple transition-all duration-200">
-            <a href="#aboutMe">About Me</a>
+            <a href="#aboutMe">{t('About me')}</a>
           </li>
           <span>|</span>
           <li className="hover:text-custom-purple transition-all duration-200">
@@ -192,31 +213,35 @@ export default function Home() {
             <a href="#contact">Contact</a>
           </li>
         </ul>
-      </nav>
+      </nav>)}
 
       <div className=" flex flex-row-reverse w-full">
         {/* ================================================== RIGTH BAR SECTION ================================================== */}
-        <div className="flex items-center h-full bg-white p-6 justify-center ">
+        {state.isPaneOpen == false && 
+           (<div className="flex items-center h-full bg-white p-6 justify-center ">
+            
           <ul className="flex flex-col w-5 gap-5 fixed items-center justify-center bottom-0 top-0 z-50">
             <li className=" transition-all duration-200 hover:scale-125" >
-              <a href="mailto:diana.farhat@outlook.com">
+              <a href="mailto:diana.farhat@outlook.com" target="blank">
                 <Image src={MailImage} alt="mail"/>
               </a>
             </li>
 
             <li className=" transition-all duration-200 hover:scale-125" >
-              <a href="https://github.com/DianaFarhat29">
+              <a href="https://github.com/DianaFarhat29" target="blank">
                 <Image src={Github2} alt="github" />
               </a>
             </li>
 
             <li className=" transition-all duration-200 hover:scale-125" >
-              <a href="https://www.linkedin.com/in/diana-farhat/">
+              <a href="https://www.linkedin.com/in/diana-farhat/" target="blank">
                 <Image src={LinkedIn} alt="linkedIn" />
               </a>
             </li>
           </ul>
-        </div>
+        </div>)}
+      
+        
 
         <div className="flex flex-col w-full h-full justify-stretch border-r border-r-custom-purple">
           {/* ================================================== INTRO SECTION ================================================== */}
@@ -229,6 +254,7 @@ export default function Home() {
                 alt="logo"
               />
             </div>
+            {language == "en" ? (
             <div className="flex w-2/3 flex-col gap-5 justify-center">
               <p className="text-white text-left text-5xl font-normal">
                 Hello. I’m Diana Farhat.
@@ -237,28 +263,41 @@ export default function Home() {
                 I’m a <span className="text-black">Full-Stack Developper</span>{" "}
                 and a{" "}
                 <span className="text-black">
-                  <br></br>Object-Oriented Programmer
-                </span>
-                .
+                  <br></br>Object-Oriented Programmer.
+                </span><nav></nav>
+             
               </p>
               <p className="text-white text-left text-2xl font-light">
                 Lets bring you project to life.
               </p>
             </div>
+            ) :
+            <div className="flex w-2/3 flex-col gap-5 justify-center">
+            <p className="text-white text-left text-5xl font-normal">
+              Salut. Je suis Diana Farhat.
+            </p>
+            <p className="text-white text-left text-xl font-light">
+              Je suis une <span className="text-black">développeuse Full-Stack</span>{" "}
+              et une{" "}
+              <span className="text-black">
+                <br></br>programmeuse spécialisée en languages orientées objet.
+              </span><nav></nav>
+              
+            </p>
+            <p className="text-white text-left text-2xl font-light">
+              Donnons vie à vos idées.
+            </p>
+          </div> }
           </div>
 
           {/* ================================================== ABOUT ME SECTION ================================================== */}
-          <div className="bg-custom-gray w-full h-96 flex px-20 gap-10">
+          <div className="bg-gradient-to-b from-custom-purple to-[#ECECEC] shadow w-full h-96 flex px-20 gap-10" id="aboutMe">
             <div className="flex w-2/3 flex-col gap-2 justify-center">
-              <p className="text-custom-purple text-left text-2xl font-medium">
-                ABOUT ME
+              <p className="text-white text-left text-2xl font-medium">
+              {language == "en" ? "ABOUT ME" : "À PROPOS"}
               </p>
               <p className="text-black text-left text-lg font-light">
-                I'm a full-stack developer and a programmer with a passion for
-                building beautiful, functional web experiences. My toolkit
-                includes Angular, ReactJS, Spring Boot, databases technologies,
-                and a dash of desktop development magic! I thrive in
-                collaborative environments and love solving problems creatively.
+              {language == "en" ?  "I'm a full-stack developer and a programmer with a passion for building beautiful, functional web experiences. My toolkit includes Angular, ReactJS, Spring Boot, databases technologies, and a dash of desktop development magic! I thrive in collaborative environments and love solving problems creatively." : "Je suis une développeuse full-stack et une programmeuse passionnée par la création d'expériences web belles et fonctionnelles. Mon kit d'outils comprend Angular, ReactJS, Spring Boot, les technologies de base de données et une touche de magie du développement de bureau! Je prospère dans des environnements collaboratifs et j'adore résoudre des problèmes de manière créative."}
               </p>
             </div>
             <div className="flex w-1/3 h-full items-center justify-end">
@@ -271,12 +310,12 @@ export default function Home() {
           </div>
 
           {/* ================================================== SKILLSET SECTION ================================================== */}
-          <div className="w-full flex border-right h-full ">
-          <div className="bg-custom-purple w-1/4 flex justify-center text-white relative items-center">
+          <div className="w-full flex border-right h-full" id="work">
+          <div className="bg-gradient-to-t from-custom-purple to-[#ECECEC] w-1/4 flex justify-center text-white relative items-center">
               <p className="-rotate-90 flex items-center text-7xl whitespace-nowrap absolute">Skillset.</p>
             </div>
 
-            <div className="bg-white w-3/4 h-full ">
+            <div className=" w-3/4 h-full  bg-gradient-to-t from-white to-[#ECECEC]">
               {/* ================================================== SKILLSET GRID ================================================== */}
               <div className="container m-auto grid grid-cols-2 grid-rows-3 gap-14 px-10 py-28">
                 <div className="">
@@ -285,12 +324,9 @@ export default function Home() {
                     src={FullStack}
                     alt="fullStack"
                   />
-                  <p className="font-bold pb-2">Full-Stack Web Development</p>
+                  <p className="font-bold pb-2">{language == "en" ? "Full-Stack Web Development" : "en fr" } </p>
                   <p className="text-light">
-                    I craft robust and visually appealing web experiences. My
-                    expertise includes modern front-end frameworks (Angular,
-                    ReactJS), robust back-end technologies (Node.js, Java,
-                    Spring Boot, ASP.Net), and efficient REST API integration.
+                  {language == "en" ? "I craft robust and visually appealing web experiences. My expertise includes modern front-end frameworks (Angular, ReactJS), robust back-end technologies (Node.js, Java,  Spring Boot, ASP.Net), and efficient REST API integration." : "Je crée des expériences web robustes et visuellement attrayantes. Mon expertise comprend des frameworks front-end modernes (Angular, ReactJS), des technologies back-end robustes (Node.js, Java, Spring Boot, ASP.Net) et une intégration efficace des API REST."}
                   </p>
                 </div>
                 <div className="">
@@ -299,12 +335,9 @@ export default function Home() {
                     src={Database}
                     alt="database"
                   />
-                  <p className="font-bold pb-2">Database Mastery</p>
+                  <p className="font-bold pb-2">{language == "en" ? "Database Mastery" : ""} </p>
                   <p>
-                    I comfortably navigate relational (SQL, MySQL, Oracle) and
-                    non-relational (MongoDB) databases. This allows me to design
-                    and implement scalable data solutions to power your
-                    applications.
+                  {language == "en" ? "I comfortably navigate relational (SQL, MySQL, Oracle) and non-relational (MongoDB) databases. This allows me to design and implement scalable data solutions to power your applications." : "Je navigue confortablement dans les bases de données relationnelles (SQL, MySQL, Oracle) et non relationnelles (MongoDB). Cela me permet de concevoir et de mettre en œuvre des solutions de données évolutives pour alimenter vos applications."}
                   </p>
                 </div>
                 <div className="">
@@ -314,12 +347,10 @@ export default function Home() {
                     alt="agile"
                   />
                   <p className="font-bold pb-2">
-                    Adaptable Development Practices
+                  {language == "en" ? "Adaptable Development Practices" : "Pratiques de développement adaptables"}
                   </p>
                   <p>
-                    I'm proficient in Agile methodologies, version control
-                    (Git), and essential tools like UML to streamline
-                    development processes and ensure collaborative success.
+                  {language == "en" ? "I'm proficient in Agile methodologies, version control (Git), and essential tools like UML to streamline development processes and ensure collaborative success." : "Je suis compétente dans les méthodologies agiles, le contrôle de version (Git) et des outils essentiels comme UML pour rationaliser les processus de développement et garantir le succès collaboratif."}
                   </p>
                 </div>
                 <div className="">
@@ -387,20 +418,16 @@ export default function Home() {
 
           {/* ================================================== PROJECTS SECTION ================================================== */}
           <div className="w-full flex flex-col border-right h-full">
-            <div className="bg-custom-purple w-full h-full py-28 px-20 flex flex-col gap-5 items-center">
+            <div className="bg-gradient-to-b from-custom-purple to-[#ECECEC] w-full h-full py-28 px-20 flex flex-col gap-5 items-center">
               <div className="w-full pl-14 flex flex-col gap-10 pb-5">
                 <p className="text-left text-2xl font-medium text-white">
                   MY PROJECTS.
                 </p>
                 <div className="flex flex-col justify-center items-center gap-2">
                   <p className="text-left text-md font-normal text-lg text-white pb-3">
-                    Hover to animate, Click for description.
+                    Hover to animate, click for description.
                   </p>
-                  <Image
-                    className="w-8 pb-3 hover:scale-110 transition-all duration-200 ease-in-out"
-                    src={DownArrow}
-                    alt="downArrow"
-                  />
+              
                 </div>
               </div>
               {/* ================================================== PROJECTS GRID ================================================== */}
@@ -409,7 +436,7 @@ export default function Home() {
               <SlidingPane
                 className="some-custom-class"
                 overlayClassName="some-custom-overlay-class"
-                title="Go back to the projects"
+                title="Go back"
                 isOpen={state.isPaneOpen}
                 width="90%"
                 onRequestClose={() => {
@@ -496,24 +523,25 @@ export default function Home() {
               </SlidingPane>
 
               <div className=" grid grid-cols-2 grid-flow-row gap-5 w-full pl-14 ">
-                <div className="flex flex-col bg-white rounded-t-md">
+                <div className="flex flex-col bg-white shadow-xl  rounded-md relative">
+              
                   {/* ================================================== PETCARE TRACKER PROJECT ================================================== */}
 
                   <div
-                    className="bg-white h-64 rounded bg-petCare "
+                    className=" h-64 rounded bg-petCare "
                     onClick={() => {
                       setState({ isPaneOpen: true });
                       setSelectedProject(petCare);
                     }}
                   ></div>
-                  <div className="flex justify-center gap-3 bg-white rounded-b-md ">
+                  <div className="flex justify-center gap-3   ">
                     <div className="flex w-full gap-3 ">
                       <InfiniteLooper speed={60} direction="left">
                         {petCare.technologies.map((technology) => {
                           return (
-                            <div className="contentBlock-techs contentBlock--one ">
+                            <div className="pr-3 w-full ">
                               <div
-                                className={`rounded-full w-full text-white ${technology.color} py-1 px-2 text-xs shadow-md h-fit whitespace-nowrap`}
+                                className={`rounded-full w-full text-white ${technology.color} py-1 px-4 text-sm shadow-sm h-fit whitespace-nowrap `}
                               >
                                 {technology.text}
                               </div>{" "}
@@ -525,29 +553,34 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="flex flex-col">
+                {/* ================================================== LE PENDU PROJECT ================================================== */}
+            <div className="flex flex-col bg-white shadow-xl  rounded-md relative">
                   <div
-                    className="bg-white h-64 bg-lePendu rounded-t-md"
+                    className="bg-white h-64 bg-lePendu rounded-t-md flex justify-center"
                     onClick={() => {
                       setState({ isPaneOpen: true });
                       setSelectedProject(pendu);
                     }}
                   ></div>
 
-                  <div className="flex justify-center gap-2 bg-white pb-5 rounded-b-md">
-                    <p className="rounded-full text-white bg-wpf-color py-1 px-2 text-sm">
-                      WPF
-                    </p>
-                    <p className="rounded-full text-white bg-csharp-color py-1 px-2 text-sm">
-                      C#
-                    </p>
-                    <p className="rounded-full text-white bg-entity-color py-1 px-2 text-sm whitespace-nowrap">
-                      Entity Framework
-                    </p>
+                  <div className="flex justify-center gap-2 bg-white pb-5 rounded-b-md ">
+                  {pendu.technologies.map((technology) => {
+                        return (
+                          <div className="flex justify-center ">
+                            <div
+                              className={`rounded-full w-full text-white ${technology.color} py-1 px-4 text-sm shadow-sm h-fit whitespace-nowrap`}
+                            >
+                              {technology.text}
+                            </div>{" "}
+                          </div>
+                        );
+                      })}
+                    
                   </div>
                 </div>
 
-                <div className="flex flex-col">
+                {/* ================================================== GRADEFLOW PROJECT ================================================== */}
+            <div className="flex flex-col bg-white shadow-xl  rounded-md relative">
                   <div
                     className="bg-white h-64 bg-gradeFlow rounded-t-md"
                     onClick={() => {
@@ -560,9 +593,9 @@ export default function Home() {
                     <InfiniteLooper speed={60} direction="left">
                       {gradeFlow.technologies.map((technology) => {
                         return (
-                          <div className="contentBlock-techs contentBlock--one ">
+                          <div className="pr-3 w-full ">
                             <div
-                              className={`rounded-full w-full text-white ${technology.color} py-1 px-2 text-xs shadow-md h-fit whitespace-nowrap`}
+                              className={`rounded-full w-full text-white ${technology.color} py-1 px-4 text-sm shadow-sm h-fit whitespace-nowrap`}
                             >
                               {technology.text}
                             </div>{" "}
@@ -573,7 +606,8 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="flex flex-col">
+                {/* ================================================== CLINIQUE CLIC PROJECT ================================================== */}
+         <div className="flex flex-col bg-white shadow-xl  rounded-md relative">
                   <div
                     className="bg-white h-64 bg-cliniqueClic rounded-t-md"
                     onClick={() => {
@@ -584,21 +618,22 @@ export default function Home() {
                   <div className="flex justify-center gap-2 bg-white pb-5 rounded-b-md">
                     <InfiniteLooper speed={60} direction="left">
                       {cliniqueClic.technologies.map((technology) => {
-                        return (
-                          <div className="contentBlock-techs contentBlock--one ">
-                            <div
-                              className={`rounded-full w-full text-white ${technology.color} py-1 px-2 text-xs shadow-md h-fit whitespace-nowrap`}
-                            >
-                              {technology.text}
-                            </div>{" "}
-                          </div>
-                        );
+                       return (
+                        <div className="pr-3 w-full ">
+                          <div
+                            className={`rounded-full w-full text-white ${technology.color} py-1 px-4 text-sm shadow-sm h-fit whitespace-nowrap`}
+                          >
+                            {technology.text}
+                          </div>{" "}
+                        </div>
+                      );
                       })}
                     </InfiniteLooper>
                   </div>
                 </div>
 
-                <div className="flex flex-col">
+                {/* ================================================== PARROT MENTOR PROJECT ================================================== */}
+         <div className="flex flex-col bg-white shadow-xl  rounded-md relative">
                   <div
                     className="bg-white h-64 bg-parrotMentor rounded-t-md"
                     onClick={() => {
@@ -606,17 +641,23 @@ export default function Home() {
                       setSelectedProject(parrotMentor);
                     }}
                   ></div>
-                  <div className="flex justify-center gap-2 bg-white pb-5 rounded-b-md">
-                    <p className="rounded-full text-white bg-windowsforms-color py-1 px-2 text-sm whitespace-nowrap">
-                      Windows Forms
-                    </p>
-                    <p className="rounded-full text-white bg-csharp-color py-1 px-2 text-sm">
-                      C#
-                    </p>
+                  <div className="flex justify-center gap-2 bg-white pb-5 pt-2 rounded-b-md">
+                  {parrotMentor.technologies.map((technology) => {
+                       return (
+                        <div className="flex justify-center ">
+                          <div
+                            className={`rounded-full w-full text-white ${technology.color} py-1 px-4 text-sm shadow-sm h-fit whitespace-nowrap`}
+                          >
+                            {technology.text}
+                          </div>{" "}
+                        </div>
+                      );
+                      })}
                   </div>
                 </div>
 
-                <div className="flex flex-col">
+                {/* ================================================== LALALAND YOGA PROJECT ================================================== */}
+                <div className="flex flex-col bg-white shadow-xl  rounded-md relative">
                   <div
                     className="bg-white h-64 bg-lalalandYoga rounded-t-md"
                     onClick={() => {
@@ -624,16 +665,18 @@ export default function Home() {
                       setSelectedProject(lalalandYoga);
                     }}
                   ></div>
-                  <div className="flex justify-center gap-2 bg-white pb-5 rounded-b-md">
-                    <p className="rounded-full text-white bg-html-color py-1 px-2 text-sm">
-                      HTML5
-                    </p>
-                    <p className="rounded-full text-white bg-tailwind-color py-1 px-2 text-sm whitespace-nowrap">
-                      Tailwind CSS
-                    </p>
-                    <p className="rounded-full text-white bg-javascript-color py-1 px-2 text-sm">
-                      Javascript
-                    </p>
+                  <div className="flex justify-center gap-2 bg-white pb-5 pt-2 rounded-b-md">
+                  {lalalandYoga.technologies.map((technology) => {
+                        return (
+                          <div className="flex justify-center ">
+                            <div
+                              className={`rounded-full w-full text-white ${technology.color} py-1 px-4 text-sm shadow-sm h-fit whitespace-nowrap`}
+                            >
+                              {technology.text}
+                            </div>{" "}
+                          </div>
+                        );
+                      })}
                   </div>
                 </div>
               </div>
@@ -662,14 +705,14 @@ export default function Home() {
           </div>
 
           {/* ================================================== CONTACT SECTION ================================================== */}
-          <div className="w-full flex border-right h-full ">
-            <div className="bg-custom-purple w-1/4 flex justify-center text-white relative items-center">
+          <div className="w-full flex border-right h-full bg-gradient-to-t from-custom-purple  to-[#ECECEC]" id="contact">
+            <div className=" w-1/4 flex justify-center text-white relative items-center">
               <p className="-rotate-90 flex items-center text-7xl whitespace-nowrap absolute">
                 Let’s connect.
               </p>
             </div>
 
-            <div className="bg-custom-purple w-3/4 h-full px-10 py-28">
+            <div className="  w-3/4 h-full px-10 py-28">
               <p className="pb-10 text-xl font-normal text-gray-800">
                 If you are interested to work with me, feel free to send me a
                 message!

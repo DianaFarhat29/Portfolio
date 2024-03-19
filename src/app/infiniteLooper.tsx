@@ -45,12 +45,6 @@ const InfiniteLooper = function InfiniteLooper({
 
     resetAnimation();
   }, [looperInstances]);
-  
-  
-  /*
-    6 instances, 200 each = 1200
-    parent = 1700
-  */
 
   useEffect(() => setupInstances(), [setupInstances]);
 
