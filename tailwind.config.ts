@@ -5,6 +5,7 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/flowbite/**/*.js"
   ],
   theme: {
     extend: {
@@ -26,6 +27,8 @@ const config: Config = {
         'wpf-color': '#0091e8',
         'windowsforms-color': '#0081c2',
         'thymeleaf-color': '#005f0f',
+        'react-color': '#66dbfb',
+        'next-color': '#181818',
 
       },
       backgroundImage: {
@@ -34,6 +37,6 @@ const config: Config = {
       display: ["group-hover"]
     },
   },
-  plugins: [],
+  plugins: [require('flowbite/plugin')],
 };
 export default config;

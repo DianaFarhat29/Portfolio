@@ -203,79 +203,7 @@ section {
   }
 }
 
-/* Project Gifs */
-.bg-petCare {
-  background-image: url('images/FramePetCare.png');
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
 
-.bg-petCare:hover {
-  background-image: url('gifs/PetCareTracker.gif');
-}
-
-
-.bg-cliniqueClic {
-  background-image: url('images/FrameClinique.png');
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-
-.bg-cliniqueClic:hover {
-  background-image: url('gifs/CliniqueClic.gif');
-}
-
-.bg-lePendu {
-  background-image: url('images/FramePendu.png');
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-
-.bg-lePendu:hover {
-  background-image: url('gifs/LePendu.gif');
-}
-
-.bg-gradeFlow {
-  background-image: url('images/FrameGradeflow.png');
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-
-.bg-gradeFlow:hover {
-  background-image: url('gifs/GradeFlow.gif');
-}
-
-.bg-lalalandYoga {
-  background-image: url('images/FrameLalaland.png');
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-
-.bg-lalalandYoga:hover {
-  background-image: url('gifs/LalalandYoga.gif');
-}
-
-.bg-parrotMentor {
-  background-image: url('images/FrameParrot.png');
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-
-.bg-parrotMentor:hover {
-  background-image: url('gifs/ParrotMentor.gif');
-}
 
 /* Slide Panel Header */
 .slide-pane__header{
