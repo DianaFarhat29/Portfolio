@@ -1014,11 +1014,11 @@ export default function Home() {
 
                 </div>
                 {language == "en" ? (
-                  <p className="text-center text-md md:text-lg md:pl-14">
-                    This portfolio was developped using <span className="rounded-full w-full text-white bg-react-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">ReactJS</span>, <span className="rounded-full w-full text-white bg-next-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">Next.js</span> and <span className="rounded-full w-full text-white bg-tailwind-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">Tailwind CSS</span>.</p>
+                  <p className="text-center  md:pl-14">
+                    This portfolio was developped using <span className="rounded-full w-full text-white bg-react-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">ReactJS</span>, <span className="rounded-full w-full text-white bg-next-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">Next.js</span>, <span className="rounded-full w-full text-white bg-typescript-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">Typescript</span> and <span className="rounded-full w-full text-white bg-tailwind-color py-1 px-4 shadow-sm h-fit whitespace-nowrap leading-10">Tailwind CSS</span>.</p>
                 ) : (
-                  <p className="text-center text-md md:text-lg md:pl-14">
-                    Ce portfolio a été développé en utilisant <span className="rounded-full w-full text-white bg-react-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">ReactJS</span>, <span className="rounded-full w-full text-white bg-next-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">Next.js</span> et <span className="rounded-full w-full text-white bg-tailwind-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">Tailwind CSS</span>.
+                  <p className="text-center  md:pl-14 h-10">
+                    Ce portfolio a été développé en utilisant <span className="rounded-full w-full text-white bg-react-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">ReactJS</span>, <span className="rounded-full w-full text-white bg-next-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">Next.js</span>, <span className="rounded-full w-full text-white bg-typescript-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">Typescript</span> et <span className="rounded-full w-full text-white bg-tailwind-color py-1 px-4 shadow-sm h-fit whitespace-nowrap leading-10">Tailwind CSS</span>.
                   </p>
                 )}
               </Fade>
