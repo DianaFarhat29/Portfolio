@@ -358,7 +358,7 @@ export default function Home() {
                     <p className="text-white text-3xl md:text-5xl font-normal text-center md:text-left">
                       Hello. I’m Diana Farhat.
                     </p>
-                    <p className="text-white text-center md:text-left text-xl font-light">
+                    <p className="text-white text-center md:text-left text-lg font-light">
                       I’m a{" "}
                       <span className="text-black">Full-Stack Developper</span>{" "}
                       and a{" "}
@@ -377,7 +377,7 @@ export default function Home() {
                     <p className="text-white text-3xl md:text-5xl font-normal text-center md:text-left">
                       Bonjour. Je suis Diana Farhat.
                     </p>
-                    <p className="text-white text-center md:text-left text-xl font-light">
+                    <p className="text-white text-center md:text-left text-lg font-light">
                       Je suis une{" "}
                       <span className="text-black ">
                         développeuse Full-Stack
@@ -418,10 +418,10 @@ export default function Home() {
                     <p className="text-custom-purple text-center md:text-left text-2xl font-medium">
                       {language == "en" ? "ABOUT ME" : "À PROPOS"}
                     </p>
-                    <p className="text-black text-center md:text-left text-lg font-light">
+                    <p className="text-black text-center md:text-left font-light">
                       {language == "en"
-                        ? "I'm a full-stack developer and a programmer with a passion for building beautiful, functional web experiences. My toolkit includes Angular, ReactJS, Spring Boot, databases technologies, and a dash of desktop development magic! I thrive in collaborative environments and love solving problems creatively."
-                        : "Je suis une développeuse full-stack et une programmeuse passionnée par la création d'expériences Web magnifiques et fonctionnelles. Ma boîte à outils comprend Angular, ReactJS, Spring Boot, des technologies de bases de données et une touche de magie de développement pour ordinateurs de bureau ! Je m'épanouis dans des environnements collaboratifs et j'adore résoudre les problèmes de manière créative."}
+                        ? "I'm a Full-Stack developer and a programmer with a passion for building beautiful, functional web experiences. My toolkit includes Angular, ReactJS, Spring Boot, databases technologies, and a dash of desktop development magic! I thrive in collaborative environments and love solving problems creatively."
+                        : "Je suis une développeuse Full-Stack et une programmeuse passionnée par la création d'expériences Web magnifiques et fonctionnelles. Ma boîte à outils comprend Angular, ReactJS, Spring Boot, des technologies de bases de données et une touche de magie de développement pour ordinateurs de bureau ! Je m'épanouis dans des environnements collaboratifs et j'adore résoudre les problèmes de manière créative."}
                     </p>
                   </Fade>
                 </div>
@@ -456,7 +456,7 @@ export default function Home() {
               <div className=" md:w-3/4 h-full  ">
                 {/* ///////////////////////////// SKILLSET GRID ///////////////////////////// */}
 
-                <div className="container m-auto grid grid-cols-1 md:grid-cols-2 grid-rows-3 gap-14 text-lg">
+                <div className="container m-auto grid grid-cols-1 md:grid-cols-2 grid-rows-3 gap-14 ">
                   {/* ///////////////////////////// FULL-STACK WEB DEVELOPMENT ///////////////////////////// */}
 
                   <div className="">
@@ -466,12 +466,12 @@ export default function Home() {
                         src={FullStack.src}
                         alt="fullStack"
                       />
-                      <p className="font-bold pb-2">
+                      <p className="font-bold pb-2 text-lg">
                         {language == "en"
                           ? "Full-Stack Web Development"
                           : "Développement Web Full-Stack"}
                       </p>
-                      <p className="text-light">
+                      <p className="">
                         {language == "en"
                           ? "I craft robust and visually appealing web experiences. My expertise includes modern front-end frameworks (Angular, ReactJS), robust back-end technologies (Node.js, Java,  Spring Boot, ASP.Net), and efficient REST API integration."
                           : "Je crée des expériences web robustes et visuellement attrayantes. Mon expertise comprend des frameworks front-end modernes (Angular, ReactJS), des technologies back-end solides (Node.js, Java, Spring Boot, ASP.Net) et une intégration efficace des API REST."}
@@ -488,7 +488,7 @@ export default function Home() {
                         src={Database.src}
                         alt="database"
                       />
-                      <p className="font-bold pb-2">
+                      <p className="font-bold pb-2 text-lg">
                         {language == "en"
                           ? "Database Mastery"
                           : "Maîtrise des bases de données"}
@@ -510,7 +510,7 @@ export default function Home() {
                         src={Agile.src}
                         alt="agile"
                       />
-                      <p className="font-bold pb-2">
+                      <p className="font-bold pb-2 text-lg">
                         {language == "en"
                           ? "Adaptable Development Practices"
                           : "Pratiques de développement adaptables"}
@@ -532,7 +532,7 @@ export default function Home() {
                         src={ComputerDesktop.src}
                         alt="computerDesktop"
                       />
-                      <p className="font-bold pb-2">
+                      <p className="font-bold pb-2 text-lg">
                         {language == "en"
                           ? "Desktop Application Development"
                           : "Développement d'applications de bureau"}
@@ -554,7 +554,7 @@ export default function Home() {
                         src={Development.src}
                         alt="development"
                       />
-                      <p className="font-bold pb-2">
+                      <p className="font-bold pb-2 text-lg">
                         {language == "en"
                           ? "Responsive & User-Centric Design"
                           : "Conception réactive et centrée sur l'utilisateur"}
@@ -576,7 +576,7 @@ export default function Home() {
                         src={Puzzle.src}
                         alt="puzzle"
                       />
-                      <p className="font-bold pb-2">
+                      <p className="font-bold pb-2 text-lg">
                         {" "}
                         {language == "en"
                           ? "Problem Solving"
@@ -668,7 +668,7 @@ export default function Home() {
                 }}
               >
                 {selectedProject && (
-                  <div className="flex flex-col gap-10 text-lg">
+                  <div className="flex flex-col gap-10">
                     <div className="flex flex-col gap-5 pt-5">
                       <p className="text-2xl font-semibold">
                         {selectedProject.title}
@@ -719,7 +719,7 @@ export default function Home() {
                         <a
                           href={selectedProject.github}
                           target="blank"
-                          className="w-8 h-auto"
+                          className="w-6 h-auto"
                         >
                           <img src={Github2.src} alt="" />
                         </a>{" "}
@@ -727,7 +727,7 @@ export default function Home() {
                       </div>
                       <a
                         href={selectedProject.github}
-                        className="text-md md:text-lg text-gray-500 "
+                        className=" text-gray-500 "
                         target="blank"
                       >
                         {selectedProject.github}
@@ -742,7 +742,7 @@ export default function Home() {
                           <a
                             href={selectedProject.website}
                             target="blank"
-                            className="w-8 h-auto"
+                            className="w-6 h-auto"
                           >
                             <img src={Website.src} alt="" />
                           </a>{" "}
@@ -752,7 +752,7 @@ export default function Home() {
                         </div>
                         <a
                           href={selectedProject.website}
-                          className="text-md md:text-lg text-gray-500"
+                          className=" text-gray-500"
                           target="blank"
                         >
                           {selectedProject.website}
@@ -1091,7 +1091,7 @@ export default function Home() {
               </div>
 
               <div className=" w-full md:w-2/3 h-full ">
-                <p className="pb-10 text-lg md:text-xl font-normal text-gray-800 text-center md:text-start">
+                <p className="pb-10 text-lg font-normal text-gray-800 text-center md:text-start">
                   {language == "en"
                     ? "If you are interested to work with me, feel free to send me a message!"
                     : "Si vous êtes intéressé(e) à travailler avec moi, n'hésitez pas à m'envoyer un message !"}
@@ -1103,7 +1103,7 @@ export default function Home() {
                     id="form-email"
                   >
                     <div>
-                      <label className="block mb-2 text-md text-white">
+                      <label className="block mb-2 text-white">
                         {language == "en" ? "Your name" : "Votre nom"}
                       </label>
                       <input
@@ -1115,7 +1115,7 @@ export default function Home() {
                       />
                     </div>
                     <div>
-                      <label className="block mb-2 text-md text-white">
+                      <label className="block mb-2 text-white">
                         {language == "en" ? "Your email" : "Votre courriel"}
                       </label>
                       <input
@@ -1128,14 +1128,14 @@ export default function Home() {
                     </div>
 
                     <div className="sm:col-span-2">
-                      <label className="block mb-2 text-md text-white ">
+                      <label className="block mb-2 text-white ">
                         {language == "en" ? "Your message" : "Votre message"}
                       </label>
                       <textarea
                         id="message"
                         name="message"
                         rows={6}
-                        className="block p-2.5 w-full text-md bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 "
+                        className="block p-2.5 w-full bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 "
                       ></textarea>
                     </div>
                     <button className="cta flex items-baseline" type="submit">
