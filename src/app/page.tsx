@@ -2,43 +2,43 @@
 
 ///////////////////////////// IMAGES IMPORTS ///////////////////////////////
 
-import MailImage from "./images/courrier.png";
-import Github2 from "./images/github2.png";
-import LinkedIn from "./images/linkedin.png";
-import LogoNoir from "./images/monogramDianaFarhatNoir.png";
-import Photo from "./images/photoLinkedIn.jpg";
-import FullStack from "./images/full-stack.png";
-import Database from "./images/database.png";
-import Agile from "./images/agile.png";
-import ComputerDesktop from "./images/computer-desktop.png";
-import Development from "./images/development.png";
-import Puzzle from "./images/puzzle.png";
-import CV from "./images/cvScreenshot.png";
-import CvFr from "./images/cvFr.png";
-import Html from "./images/HTML5.png";
-import Spring from "./images/spring.png";
-import Angular from "./images/angular-logo.png";
-import Java from "./images/java2.webp";
-import TailwindCss from "./images/tailwind.png";
-import Css from "./images/CSS3.png";
-import AspNet from "./images/asp.net.png";
-import DownArrow from "./images/down.png";
-import Csharp from "./images/Csharp.png";
-import EntityFramework from "./images/entityFramework.jpg";
-import Javascript from "./images/javascript.jpg";
-import ReactJs from "./images/reactJs.png";
-import Oracle from "./images/oracle.png";
-import MySql from "./images/mySql.jpg";
-import Bootstrap from "./images/bootstrap.svg";
-import Typescript from "./images/typescript.png";
-import WPF from "./images/wpf.png";
-import WindowsForm from "./images/winforms.png";
-import Thymeleaf from "./images/thymeleaf.png";
-import Website from "./images/website.png";
-import Help from "./images/aide.png";
-import Next from "./images/next.webp";
-import Anglais from "./images/united-states.png";
-import Francais from "./images/france.png";
+import MailImage from "./gifs/images/courrier.png";
+import Github2 from "./gifs/images/github2.png";
+import LinkedIn from "./gifs/images/linkedin.png";
+import LogoNoir from "./gifs/images/monogramDianaFarhatNoir.png";
+import Photo from "./gifs/images/photoLinkedIn.jpg";
+import FullStack from "./gifs/images/full-stack.png";
+import Database from "./gifs/images/database.png";
+import Agile from "./gifs/images/agile.png";
+import ComputerDesktop from "./gifs/images/computer-desktop.png";
+import Development from "./gifs/images/development.png";
+import Puzzle from "./gifs/images/puzzle.png";
+import CV from "./gifs/images/cvScreenshot.png";
+import CvFr from "./gifs/images/cvFr.png";
+import Html from "./gifs/images/HTML5.png";
+import Spring from "./gifs/images/spring.png";
+import Angular from "./gifs/images/angular-logo.png";
+import Java from "./gifs/images/java2.webp";
+import TailwindCss from "./gifs/images/tailwind.png";
+import Css from "./gifs/images/CSS3.png";
+import AspNet from "./gifs/images/asp.net.png";
+import DownArrow from "./gifs/images/down.png";
+import Csharp from "./gifs/images/Csharp.png";
+import EntityFramework from "./gifs/images/entityFramework.jpg";
+import Javascript from "./gifs/images/javascript.jpg";
+import ReactJs from "./gifs/images/reactJs.png";
+import Oracle from "./gifs/images/oracle.png";
+import MySql from "./gifs/images/mySql.jpg";
+import Bootstrap from "./gifs/images/bootstrap.svg";
+import Typescript from "./gifs/images/typescript.png";
+import WPF from "./gifs/images/wpf.png";
+import WindowsForm from "./gifs/images/winforms.png";
+import Thymeleaf from "./gifs/images/thymeleaf.png";
+import Website from "./gifs/images/website.png";
+import Help from "./gifs/images/aide.png";
+import Next from "./gifs/images/next.webp";
+import Anglais from "./gifs/images/united-states.png";
+import Francais from "./gifs/images/france.png";
 
 ///////////////////////////// OTHER IMPORTS ///////////////////////////////
 
@@ -49,6 +49,7 @@ import InfiniteLooper from "./infiniteLooper";
 import emailjs from "emailjs-com";
 import { Fade } from "react-awesome-reveal";
 import { Player } from "@lottiefiles/react-lottie-player";
+import { Textarea } from "@material-tailwind/react";
 
 ///////////////////////////// TECHNOLOGIES IMAGES CONSTANTS ///////////////////////////////
 
@@ -72,7 +73,6 @@ const images = [
   { id: "wpf", src: WPF.src, alt: "WPF Logo" },
   { id: "windowsForm", src: WindowsForm.src, alt: "Windows Form Logo" },
   { id: "thymeleaf", src: Thymeleaf.src, alt: "Thymeleaf Logo" },
-
 ].map((image) => ({
   id: crypto.randomUUID(),
   image,
@@ -201,7 +201,7 @@ export default function Home() {
         "service_le7h5bq",
         "template_oh36xyg",
         event.target,
-        "h18n34H5pvggDSR7I"
+        "h18n34H5pvggDSR7I",
       )
       .then(
         (result) => {
@@ -215,35 +215,35 @@ export default function Home() {
             language == "en"
               ? setSendText("Oops, something wrong happened. Send again?")
               : setSendTextFr(
-                  "Oops, une erreur s'est produite. Envoyer un nouveau message?"
+                  "Oops, une erreur s'est produite. Envoyer un nouveau message?",
                 );
           }
-        }
+        },
       );
   }
 
   return (
-    <main className=" w-full h-full relative">
+    <main className="relative h-full w-full">
       {/* ///////////////////////////// NAV BAR ///////////////////////////// */}
 
-      <div className="flex  w-full items-center max-w-screen-2xl mx-auto">
-        <div className="flex  justify-center items-center w-32 h-10  relative md:translate-y-0 md:translate-x-0  -translate-x-2">
-          <img className=" absolute " src={LogoNoir.src} alt="logo" />
+      <div className="mx-auto flex w-full max-w-screen-2xl items-center">
+        <div className="relative flex h-10 w-32 -translate-x-2 items-center justify-center md:translate-x-0 md:translate-y-0">
+          <img className="absolute" src={LogoNoir.src} alt="logo" />
         </div>
         {state.isPaneOpen == false && (
-          <div className=" flex flex-row text-center h-24  bg-white w-full justify-center items-center text-sm md:text-base">
-            <ul className="flex justify-center items-center text-center w-fit gap-2 fixed p-2 mt-2 px-5 bg-white rounded-2xl z-30">
-              <li className="hover:text-custom-purple transition-all duration-200 ">
+          <div className="flex h-24 w-full flex-row items-center justify-center bg-white text-center text-sm md:text-base">
+            <ul className="fixed z-30 mt-2 flex w-fit items-center justify-center gap-2 rounded-2xl bg-white p-2 px-5 text-center">
+              <li className="transition-all duration-200 hover:text-custom-purple">
                 <a href="#aboutMe">
                   {language == "en" ? "About me" : "À propos"}
                 </a>
               </li>
               <span>|</span>
-              <li className="hover:text-custom-purple transition-all duration-200">
+              <li className="transition-all duration-200 hover:text-custom-purple">
                 <a href="#work">{language == "en" ? "Work" : "Travail"}</a>
               </li>
               <span>|</span>
-              <li className="hover:text-custom-purple transition-all duration-200">
+              <li className="transition-all duration-200 hover:text-custom-purple">
                 <a href="#contact">Contact</a>
               </li>
             </ul>
@@ -252,21 +252,20 @@ export default function Home() {
 
         {/* ///////////////////////////// LANGUAGE CHANGE (ENG OR FR) ///////////////////////////// */}
 
-        <div className="flex flex-col gap-2 h-10 w-32 relative items-start justify-center ">
+        <div className="relative flex h-10 w-32 flex-col items-end justify-center gap-2 pr-3">
           {/* ///////////////////////////// ENGLISH ///////////////////////////// */}
 
           {language == "en" && (
-            <div className="flex flex-col justiy-center gap-2 bg-white rounded p-2  hover:shadow transition-all absolute top-0 translate-x-6 md:translate-x-0">
+            <div className="justiy-center absolute top-0 flex flex-col gap-2 rounded bg-white p-2 transition-all hover:shadow">
               <button
-                className={`flex gap-1 items-center justify-between w-full font-semibold p-1 bg-white
-            `}
+                className={`flex w-full items-center gap-2 p-1 font-semibold`}
                 onClick={() =>
                   changingLanguage
                     ? setChangingLanguage(false)
                     : setChangingLanguage(true)
                 }
               >
-                <img src={Anglais.src} alt="" className="w-5" />
+                <span>EN</span>
               </button>
               {changingLanguage && (
                 <button
@@ -274,10 +273,9 @@ export default function Home() {
                     setLanguage("fr");
                     setChangingLanguage(false);
                   }}
-                  className={`flex gap-2 items-center justify-between w-full p-1 bg-white
-            `}
+                  className={`flex w-full items-center gap-2 p-1 transition-all duration-200 ease-in-out hover:text-custom-purple`}
                 >
-                  <img src={Francais.src} alt="" className="w-5" />
+                  <span>FR</span>
                 </button>
               )}
             </div>
@@ -286,29 +284,26 @@ export default function Home() {
           {/* ///////////////////////////// FRENCH ///////////////////////////// */}
 
           {language == "fr" && (
-            <div className="flex flex-col justiy-center gap-2 bg-white rounded p-2  hover:shadow transition-all absolute top-0 md:translate-y-0 md:translate-x-0 translate-y-12 translate-x-6">
+            <div className="justiy-center absolute top-0 flex flex-col gap-2 rounded bg-white p-2 transition-all hover:shadow">
               <button
-                className={`flex gap-1 items-center justify-between w-full font-semibold p-1 bg-white
-            `}
+                className={`flex w-full items-center gap-2 p-1 font-semibold`}
                 onClick={() =>
                   changingLanguage
                     ? setChangingLanguage(false)
                     : setChangingLanguage(true)
                 }
               >
-                <img src={Francais.src} alt="" className="w-5" />
+                <span>FR</span>
               </button>
-
               {changingLanguage && (
                 <button
                   onClick={() => {
                     setLanguage("en");
                     setChangingLanguage(false);
                   }}
-                  className={`flex gap-2 items-center justify-between w-full p-1 bg-white
-            `}
+                  className={`flex w-full items-center gap-2 p-1 transition-all duration-200 ease-in-out hover:text-custom-purple`}
                 >
-                  <img src={Anglais.src} alt="" className="w-5" />
+                  <span>EN</span>
                 </button>
               )}
             </div>
@@ -317,25 +312,25 @@ export default function Home() {
         <div className="md:p-6"></div>
       </div>
 
-      <div className=" flex flex-col md:flex-row-reverse w-full ">
+      <div className="flex w-full flex-col md:flex-row-reverse">
         {/* ///////////////////////////// RIGHT SIDE NAV BAR ///////////////////////////// */}
 
         {state.isPaneOpen == false && (
-          <div className="flex items-center md:h-full bg-white p-2 md:p-6 justify-center ">
-            <ul className="flex md:flex-col md:w-5 gap-5 md:fixed items-center justify-center bottom-0 top-0 z-50">
-              <li className=" transition-all duration-200 hover:scale-125">
+          <div className="flex items-center justify-center bg-white p-2 md:h-full md:p-6">
+            <ul className="bottom-0 top-0 z-50 flex items-center justify-center gap-5 md:fixed md:w-5 md:flex-col">
+              <li className="transition-all duration-200 hover:scale-125">
                 <a href="mailto:diana.farhat@outlook.com" target="blank">
                   <img src={MailImage.src} alt="mail" className="w-5" />
                 </a>
               </li>
 
-              <li className=" transition-all duration-200 hover:scale-125">
+              <li className="transition-all duration-200 hover:scale-125">
                 <a href="https://github.com/DianaFarhat29" target="blank">
                   <img src={Github2.src} alt="github" className="w-5" />
                 </a>
               </li>
 
-              <li className=" transition-all duration-200 hover:scale-125">
+              <li className="transition-all duration-200 hover:scale-125">
                 <a
                   href="https://www.linkedin.com/in/diana-farhat/"
                   target="blank"
@@ -347,18 +342,18 @@ export default function Home() {
           </div>
         )}
 
-        <div className="flex flex-col w-full h-full justify-stretch border-r border-r-custom-purple bg-custom-purple ">
+        <div className="flex h-full w-full flex-col justify-stretch border-r border-r-custom-purple bg-custom-purple">
           <div className="bg-gradient-to-t from-custom-gray to-custom-purple">
             {/* ///////////////////////////// INTRO SECTION ///////////////////////////// */}
 
-            <div className="items-center justify-center flex flex-col-reverse md:flex-row  p-5 md:p-20 py-20 gap-20 md:gap-10 md:w-3/4 mx-auto max-w-screen-2xl">
+            <div className="mx-auto flex max-w-screen-2xl flex-col-reverse items-center justify-center gap-20 p-5 py-20 md:w-3/4 md:flex-row md:gap-10 md:p-20">
               {language == "en" ? (
-                <div className="flex flex-1 flex-col gap-5 justify-center items-center md:items-start ">
+                <div className="flex flex-1 flex-col items-center justify-center gap-5 md:items-start">
                   <Fade cascade triggerOnce damping={0.5} duration={1000}>
-                    <p className="text-white text-3xl md:text-5xl font-normal text-center md:text-left">
+                    <p className="text-center text-3xl font-normal text-white md:text-left md:text-5xl">
                       Hello. I’m Diana Farhat.
                     </p>
-                    <p className="text-white text-center md:text-left text-lg font-light">
+                    <p className="text-center text-lg font-light text-white md:text-left">
                       I’m a{" "}
                       <span className="text-black">Full-Stack Developper</span>{" "}
                       and a{" "}
@@ -366,20 +361,20 @@ export default function Home() {
                         Object-Oriented Programmer.
                       </span>
                     </p>
-                    <p className="text-white text-2xl md:text-3xl font-light">
+                    <p className="text-2xl font-light text-white md:text-3xl">
                       Lets bring your project to life.
                     </p>
                   </Fade>
                 </div>
               ) : (
-                <div className="flex flex-1 flex-col gap-5 justify-center items-center md:items-start ">
+                <div className="flex flex-1 flex-col items-center justify-center gap-5 md:items-start">
                   <Fade cascade triggerOnce damping={0.5} duration={1000}>
-                    <p className="text-white text-3xl md:text-5xl font-normal text-center md:text-left">
+                    <p className="text-center text-3xl font-normal text-white md:text-left md:text-5xl">
                       Bonjour. Je suis Diana Farhat.
                     </p>
-                    <p className="text-white text-center md:text-left text-lg font-light">
+                    <p className="text-center text-lg font-light text-white md:text-left">
                       Je suis une{" "}
-                      <span className="text-black ">
+                      <span className="text-black">
                         développeuse Full-Stack
                       </span>{" "}
                       et une{" "}
@@ -388,7 +383,7 @@ export default function Home() {
                         objet.
                       </span>
                     </p>
-                    <p className="text-white text-2xl md:text-3xl font-light">
+                    <p className="text-2xl font-light text-white md:text-3xl">
                       Donnons vie à votre projet.
                     </p>
                   </Fade>
@@ -397,7 +392,7 @@ export default function Home() {
 
               {/* ///////////////////////////// LOTTIE ANIMATION ///////////////////////////// */}
 
-              <div className="flex w-1/3 justify-center relative items-center  ">
+              <div className="relative flex w-1/3 items-center justify-center">
                 <Fade triggerOnce damping={0.5} duration={2000}>
                   <Player
                     autoplay
@@ -412,23 +407,23 @@ export default function Home() {
             {/* ///////////////////////////// ABOUT ME SECTION ///////////////////////////// */}
 
             <div className=" " id="aboutMe">
-              <div className="md:w-3/4 mx-auto flex flex-col-reverse md:flex-row-reverse justify-center items-center gap-10 p-5 md:p-20 py-20 max-w-screen-2xl">
-                <div className="flex w-full md:flex-1 flex-col gap-2 justify-center ">
+              <div className="mx-auto flex max-w-screen-2xl flex-col-reverse items-center justify-center gap-10 p-5 py-20 md:w-3/4 md:flex-row-reverse md:p-20">
+                <div className="flex w-full flex-col justify-center gap-2 md:flex-1">
                   <Fade cascade triggerOnce damping={0.5} duration={1000}>
-                    <p className="text-custom-purple text-center md:text-left text-2xl font-medium">
+                    <p className="text-center text-2xl font-medium text-custom-purple md:text-left">
                       {language == "en" ? "ABOUT ME" : "À PROPOS"}
                     </p>
-                    <p className="text-black text-center md:text-left font-light">
+                    <p className="text-center font-light text-black md:text-left">
                       {language == "en"
                         ? "I'm a Full-Stack developer and a programmer with a passion for building beautiful, functional web experiences. My toolkit includes Angular, ReactJS, Spring Boot, databases technologies, and a dash of desktop development magic! I thrive in collaborative environments and love solving problems creatively."
                         : "Je suis une développeuse Full-Stack et une programmeuse passionnée par la création d'expériences Web magnifiques et fonctionnelles. Ma boîte à outils comprend Angular, ReactJS, Spring Boot, des technologies de bases de données et une touche de magie de développement pour ordinateurs de bureau ! Je m'épanouis dans des environnements collaboratifs et j'adore résoudre les problèmes de manière créative."}
                     </p>
                   </Fade>
                 </div>
-                <div className="flex h-full items-center  ">
+                <div className="flex h-full items-center">
                   <Fade cascade triggerOnce duration={2000}>
                     <img
-                      className="w-full max-w-40 md:max-w-52 shadow-xl object-cover rounded-full"
+                      className="w-full max-w-40 rounded-full object-cover shadow-xl md:max-w-52"
                       src={Photo.src}
                       alt="photo"
                     />
@@ -441,32 +436,32 @@ export default function Home() {
           {/* ///////////////////////////// SKILLSET SECTION ///////////////////////////// */}
 
           <div
-            className=" border-right bg-gradient-to-b from-custom-gray to-white  "
+            className="border-right bg-gradient-to-b from-custom-gray to-white"
             id="work"
           >
-            <div className="w-full flex flex-col md:flex-row h-full mx-auto p-5 md:p-20 py-20 gap-20 md:gap-10 max-w-screen-2xl">
-              <div className="md:w-1/4 flex justify-center relative items-center text-custom-purple">
-                <div className="md:-rotate-90 flex items-center text-5xl md:text-7xl whitespace-nowrap">
+            <div className="mx-auto flex h-full w-full max-w-screen-2xl flex-col gap-20 p-5 py-20 md:flex-row md:gap-10 md:p-20">
+              <div className="relative flex items-center justify-center text-custom-purple md:w-1/4">
+                <div className="flex items-center whitespace-nowrap text-5xl md:-rotate-90 md:text-7xl">
                   <Fade duration={1500} triggerOnce>
                     {language == "en" ? "Skillset." : "Compétences."}
                   </Fade>
                 </div>
               </div>
 
-              <div className=" md:w-3/4 h-full  ">
+              <div className="h-full md:w-3/4">
                 {/* ///////////////////////////// SKILLSET GRID ///////////////////////////// */}
 
-                <div className="container m-auto grid grid-cols-1 md:grid-cols-2 grid-rows-3 gap-14 ">
+                <div className="container m-auto grid grid-cols-1 grid-rows-3 gap-14 md:grid-cols-2">
                   {/* ///////////////////////////// FULL-STACK WEB DEVELOPMENT ///////////////////////////// */}
 
                   <div className="">
                     <Fade duration={1500} triggerOnce>
                       <img
-                        className="w-10 pb-5 hover:scale-110 transition-all duration-200 ease-in-out"
+                        className="w-10 pb-5 transition-all duration-200 ease-in-out hover:scale-110"
                         src={FullStack.src}
                         alt="fullStack"
                       />
-                      <p className="font-bold pb-2 text-lg">
+                      <p className="pb-2 text-lg font-bold">
                         {language == "en"
                           ? "Full-Stack Web Development"
                           : "Développement Web Full-Stack"}
@@ -484,11 +479,11 @@ export default function Home() {
                   <div className="">
                     <Fade duration={1500} triggerOnce>
                       <img
-                        className="w-10 pb-5 hover:scale-110 transition-all duration-200 ease-in-out"
+                        className="w-10 pb-5 transition-all duration-200 ease-in-out hover:scale-110"
                         src={Database.src}
                         alt="database"
                       />
-                      <p className="font-bold pb-2 text-lg">
+                      <p className="pb-2 text-lg font-bold">
                         {language == "en"
                           ? "Database Mastery"
                           : "Maîtrise des bases de données"}
@@ -506,11 +501,11 @@ export default function Home() {
                   <div className="">
                     <Fade duration={1500} triggerOnce>
                       <img
-                        className="w-10 pb-5 scale-[115%] hover:scale-125 transition-all duration-200 ease-in-out"
+                        className="w-10 scale-[115%] pb-5 transition-all duration-200 ease-in-out hover:scale-125"
                         src={Agile.src}
                         alt="agile"
                       />
-                      <p className="font-bold pb-2 text-lg">
+                      <p className="pb-2 text-lg font-bold">
                         {language == "en"
                           ? "Adaptable Development Practices"
                           : "Pratiques de développement adaptables"}
@@ -528,11 +523,11 @@ export default function Home() {
                   <div className="">
                     <Fade duration={1500} triggerOnce>
                       <img
-                        className="w-10 pb-5 hover:scale-110 transition-all duration-200 ease-in-out"
+                        className="w-10 pb-5 transition-all duration-200 ease-in-out hover:scale-110"
                         src={ComputerDesktop.src}
                         alt="computerDesktop"
                       />
-                      <p className="font-bold pb-2 text-lg">
+                      <p className="pb-2 text-lg font-bold">
                         {language == "en"
                           ? "Desktop Application Development"
                           : "Développement d'applications de bureau"}
@@ -550,11 +545,11 @@ export default function Home() {
                   <div className="">
                     <Fade duration={1500} triggerOnce>
                       <img
-                        className="w-10 pb-5 hover:scale-110 transition-all duration-200 ease-in-out"
+                        className="w-10 pb-5 transition-all duration-200 ease-in-out hover:scale-110"
                         src={Development.src}
                         alt="development"
                       />
-                      <p className="font-bold pb-2 text-lg">
+                      <p className="pb-2 text-lg font-bold">
                         {language == "en"
                           ? "Responsive & User-Centric Design"
                           : "Conception réactive et centrée sur l'utilisateur"}
@@ -572,11 +567,11 @@ export default function Home() {
                   <div className="">
                     <Fade duration={1500} triggerOnce>
                       <img
-                        className="w-10 pb-5 hover:scale-110 transition-all duration-200 ease-in-out"
+                        className="w-10 pb-5 transition-all duration-200 ease-in-out hover:scale-110"
                         src={Puzzle.src}
                         alt="puzzle"
                       />
-                      <p className="font-bold pb-2 text-lg">
+                      <p className="pb-2 text-lg font-bold">
                         {" "}
                         {language == "en"
                           ? "Problem Solving"
@@ -596,55 +591,54 @@ export default function Home() {
 
           {/* ///////////////////////////// TECHNOLOGIES BANNER SECTION ///////////////////////////// */}
 
-         <div className="bg-white w-full h-full py-10 flex ">
-              <InfiniteLooper speed={60} direction="left">
-                {images.map(({ id, image }) => (
-                  <div
-                    key={image.id}
-                    className="contentBlock-banner contentBlock--one"
-                  >
-                    <img
-                      id={image.id}
-                      src={image.src}
-                      alt={image.alt}
-                      className="max-h-20 w-auto"
-                    />{" "}
-                  </div>
-                ))}
-                  {images.map(({ id, image }) => (
-                  <div
-                    key={image.id}
-                    className="contentBlock-banner contentBlock--one"
-                  >
-                    <img
-                      id={image.id}
-                      src={image.src}
-                      alt={image.alt}
-                      className="max-h-20 w-auto"
-                    />{" "}
-                  </div>
-                ))}
-              </InfiniteLooper>
-           
-              </div>
+          <div className="flex h-full w-full bg-white py-10">
+            <InfiniteLooper speed={60} direction="left">
+              {images.map(({ id, image }) => (
+                <div
+                  key={image.id}
+                  className="contentBlock-banner contentBlock--one"
+                >
+                  <img
+                    id={image.id}
+                    src={image.src}
+                    alt={image.alt}
+                    className="max-h-20 w-auto"
+                  />{" "}
+                </div>
+              ))}
+              {images.map(({ id, image }) => (
+                <div
+                  key={image.id}
+                  className="contentBlock-banner contentBlock--one"
+                >
+                  <img
+                    id={image.id}
+                    src={image.src}
+                    alt={image.alt}
+                    className="max-h-20 w-auto"
+                  />{" "}
+                </div>
+              ))}
+            </InfiniteLooper>
+          </div>
 
           {/* ///////////////////////////// PROJECTS SECTION ///////////////////////////// */}
 
-          <div className=" bg-gradient-to-b from-white via-custom-purple to-[#ECECEC] ">
-            <div className="w-full flex flex-col border-right h-full p-5 md:p-20 py-20 gap-20 max-w-screen-2xl mx-auto">
-              <div className="w-full md:pl-14 flex flex-row-reverse md:flex-row gap-2 justify-center items-center">
+          <div className="bg-gradient-to-b from-white via-custom-purple to-[#ECECEC]">
+            <div className="border-right mx-auto flex h-full w-full max-w-screen-2xl flex-col gap-20 p-5 py-20 md:p-20">
+              <div className="flex w-full flex-row-reverse items-center justify-center gap-2 md:flex-row md:pl-14">
                 <Fade duration={1500} triggerOnce>
-                  <p className="text-left text-3xl md:text-5xl font-medium text-custom-purple">
+                  <p className="text-left text-3xl font-medium text-custom-purple md:text-5xl">
                     {language == "en" ? "MY PROJECTS." : "Mes projets."}
                   </p>
-                  <div className="relative group ">
+                  <div className="group relative">
                     <img
-                      className="w-10 hover:scale-110 transition-all duration-200 ease-in-out cursor-pointer"
+                      className="w-10 cursor-pointer transition-all duration-200 ease-in-out hover:scale-110"
                       src={Help.src}
                       alt="help"
                     />
 
-                    <div className="group-hover:opacity-100  absolute z-10 -right-[350%] -top-[150%]  md:translate-x-1 inline-block px-3 py-2 text-sm font-medium  transition-opacity duration-300 bg-white rounded-lg shadow-sm opacity-0 ">
+                    <div className="absolute -right-[350%] -top-[150%] z-10 inline-block rounded-lg bg-white px-3 py-2 text-sm font-medium opacity-0 shadow-sm transition-opacity duration-300 group-hover:opacity-100 md:translate-x-1">
                       {language == "en"
                         ? "Hover to animate, click for description."
                         : "Survolez pour animer, cliquez pour la description."}
@@ -658,7 +652,7 @@ export default function Home() {
               {/* ///////////////////////////// RIGHT PANNEL SLIDE FOR PROJECT DESCRIPTION ///////////////////////////// */}
 
               <SlidingPane
-                className="some-custom-class "
+                className="some-custom-class"
                 overlayClassName="some-custom-overlay-class "
                 title={language == "en" ? "Go back" : "Retour"}
                 isOpen={state.isPaneOpen}
@@ -697,12 +691,12 @@ export default function Home() {
 
                     <div className="flex flex-col gap-5">
                       <p className="font-semibold">Technologies</p>
-                      <div className="flex flex-wrap w-full gap-3 whitespace-nowrap">
+                      <div className="flex w-full flex-wrap gap-3 whitespace-nowrap">
                         {selectedProject.technologies.map((technology) => {
                           return (
                             <div
                               key={technology.text}
-                              className={`rounded-full text-white ${technology.color} px-4 py-1 shadow-md whitespace-nowrap text-white`}
+                              className={`rounded-full text-white ${technology.color} whitespace-nowrap px-4 py-1 text-white shadow-md`}
                             >
                               {" "}
                               {technology.text}{" "}
@@ -714,12 +708,12 @@ export default function Home() {
 
                     {/* ///////////////////////////// GITHUB LINK OF PROJECT ///////////////////////////// */}
 
-                    <div className="flex flex-col gap-5 pt-2 ">
-                      <div className="flex gap-2 items-center">
+                    <div className="flex flex-col gap-5 pt-2">
+                      <div className="flex items-center gap-2">
                         <a
                           href={selectedProject.github}
                           target="blank"
-                          className="w-6 h-auto"
+                          className="h-auto w-6"
                         >
                           <img src={Github2.src} alt="" />
                         </a>{" "}
@@ -727,7 +721,7 @@ export default function Home() {
                       </div>
                       <a
                         href={selectedProject.github}
-                        className=" text-gray-500 "
+                        className="text-gray-500"
                         target="blank"
                       >
                         {selectedProject.github}
@@ -738,11 +732,11 @@ export default function Home() {
 
                     {selectedProject.website !== "" && (
                       <div className="flex flex-col gap-5 pt-2">
-                        <div className="flex gap-2 items-center">
+                        <div className="flex items-center gap-2">
                           <a
                             href={selectedProject.website}
                             target="blank"
-                            className="w-6 h-auto"
+                            className="h-auto w-6"
                           >
                             <img src={Website.src} alt="" />
                           </a>{" "}
@@ -752,7 +746,7 @@ export default function Home() {
                         </div>
                         <a
                           href={selectedProject.website}
-                          className=" text-gray-500"
+                          className="text-gray-500"
                           target="blank"
                         >
                           {selectedProject.website}
@@ -766,9 +760,9 @@ export default function Home() {
               <Fade duration={1500} triggerOnce>
                 {/* ///////////////////////////// GRID ///////////////////////////// */}
 
-                <div className=" grid grid-cols-1 lg:grid-cols-2 grid-flow-row gap-10 w-full md:pl-14 ">
+                <div className="grid w-full grid-flow-row grid-cols-1 gap-10 md:pl-14 lg:grid-cols-2">
                   <div
-                    className="shadow-xl relative  flex flex-col bg-[#56D4E0] rounded-md cursor-pointer"
+                    className="relative flex cursor-pointer flex-col rounded-md bg-[#56D4E0] shadow-xl"
                     onClick={() => {
                       setState({ isPaneOpen: true });
                       setSelectedProject(petCare);
@@ -777,7 +771,7 @@ export default function Home() {
                     {/* ///////////////////////////// PETCARE TRACKER PROJECT ///////////////////////////// */}
 
                     <video
-                      className="rounded-t-md h-5/6"
+                      className="h-5/6 rounded-t-md"
                       onMouseOver={(e) => (e.target as HTMLVideoElement).play()}
                       onMouseOut={(e) => {
                         const video = e.target as HTMLVideoElement;
@@ -788,13 +782,13 @@ export default function Home() {
                       src={petCare.video}
                     />
 
-                    <div className="flex justify-center gap-1 md:gap-2 pb-4  h-1/6 bottom-0 w-full">
+                    <div className="bottom-0 flex h-1/6 w-full justify-center gap-1 pb-4 md:gap-2">
                       <InfiniteLooper speed={60} direction="left">
                         {petCare.technologies.map((technology) => {
                           return (
-                            <div key={technology.text} className="pr-3 w-full ">
+                            <div key={technology.text} className="w-full pr-3">
                               <div
-                                className={`rounded-full w-full text-white ${technology.color} py-1 px-4 text-xs md:text-sm shadow-sm h-fit whitespace-nowrap`}
+                                className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
                               >
                                 {technology.text}
                               </div>{" "}
@@ -807,16 +801,16 @@ export default function Home() {
 
                   {/* ///////////////////////////// LE PENDU PROJECT ///////////////////////////// */}
 
-                  <div className="flex flex-col bg-white shadow-xl rounded-md relative">
-                  <div
-                    className="shadow-xl relative flex flex-col bg-white rounded-md cursor-pointer"
-                    onClick={() => {
-                      setState({ isPaneOpen: true });
-                      setSelectedProject(pendu);
-                    }}
-                  >
+                  <div className="relative flex flex-col rounded-md bg-white shadow-xl">
+                    <div
+                      className="relative flex cursor-pointer flex-col rounded-md bg-white shadow-xl"
+                      onClick={() => {
+                        setState({ isPaneOpen: true });
+                        setSelectedProject(pendu);
+                      }}
+                    >
                       <video
-                  className="rounded-t-md h-5/6"
+                        className="h-5/6 rounded-t-md"
                         onMouseOver={(e) =>
                           (e.target as HTMLVideoElement).play()
                         }
@@ -829,15 +823,15 @@ export default function Home() {
                         src={pendu.video}
                       />
 
-                  <div className="flex justify-center gap-1 md:gap-2 pb-4 h-1/6 bottom-0 w-full">
+                      <div className="bottom-0 flex h-1/6 w-full justify-center gap-1 pb-4 md:gap-2">
                         {pendu.technologies.map((technology) => {
                           return (
                             <div
                               key={technology.text}
-                              className="flex justify-center "
+                              className="flex justify-center"
                             >
                               <div
-                                className={`rounded-full w-full text-white ${technology.color} py-1 px-4 text-xs md:text-sm shadow-sm h-fit whitespace-nowrap`}
+                                className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
                               >
                                 {technology.text}
                               </div>{" "}
@@ -851,33 +845,31 @@ export default function Home() {
                   {/* ///////////////////////////// GRADEFLOW PROJECT ///////////////////////////// */}
 
                   <div
-                    className="shadow-xl relative flex flex-col bg-[#1F2936] rounded-md cursor-pointer"
+                    className="relative flex cursor-pointer flex-col rounded-md bg-[#1F2936] shadow-xl"
                     onClick={() => {
                       setState({ isPaneOpen: true });
                       setSelectedProject(gradeFlow);
                     }}
                   >
-                      <video
-                        className="rounded-t-md"
-                        onMouseOver={(e) =>
-                          (e.target as HTMLVideoElement).play()
-                        }
-                        onMouseOut={(e) => {
-                          const video = e.target as HTMLVideoElement;
-                          video.pause();
-                          video.currentTime = 0;
-                        }}
-                        muted
-                        src={gradeFlow.video}
-                      />
+                    <video
+                      className="rounded-t-md"
+                      onMouseOver={(e) => (e.target as HTMLVideoElement).play()}
+                      onMouseOut={(e) => {
+                        const video = e.target as HTMLVideoElement;
+                        video.pause();
+                        video.currentTime = 0;
+                      }}
+                      muted
+                      src={gradeFlow.video}
+                    />
 
-<div className="flex justify-center gap-1 md:gap-2 pb-4  bottom-0 w-full">
+                    <div className="bottom-0 flex w-full justify-center gap-1 pb-4 md:gap-2">
                       <InfiniteLooper speed={60} direction="left">
                         {gradeFlow.technologies.map((technology) => {
                           return (
-                            <div key={technology.text} className="pr-3 w-full ">
+                            <div key={technology.text} className="w-full pr-3">
                               <div
-                                className={`rounded-full w-full text-white ${technology.color} py-1 px-4 text-xs md:text-sm shadow-sm h-fit whitespace-nowrap`}
+                                className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
                               >
                                 {technology.text}
                               </div>{" "}
@@ -890,35 +882,32 @@ export default function Home() {
 
                   {/* ///////////////////////////// CLINIQUE CLIC PROJECT ///////////////////////////// */}
 
-               
                   <div
-                    className="shadow-xl relative flex flex-col bg-[#618CC6] rounded-md cursor-pointer"
+                    className="relative flex cursor-pointer flex-col rounded-md bg-[#618CC6] shadow-xl"
                     onClick={() => {
                       setState({ isPaneOpen: true });
                       setSelectedProject(cliniqueClic);
                     }}
                   >
-                      <video
-                  className="rounded-t-md"
-                        onMouseOver={(e) =>
-                          (e.target as HTMLVideoElement).play()
-                        }
-                        onMouseOut={(e) => {
-                          const video = e.target as HTMLVideoElement;
-                          video.pause();
-                          video.currentTime = 0;
-                        }}
-                        muted
-                        src={cliniqueClic.video}
-                      />
+                    <video
+                      className="rounded-t-md"
+                      onMouseOver={(e) => (e.target as HTMLVideoElement).play()}
+                      onMouseOut={(e) => {
+                        const video = e.target as HTMLVideoElement;
+                        video.pause();
+                        video.currentTime = 0;
+                      }}
+                      muted
+                      src={cliniqueClic.video}
+                    />
 
-                <div className="flex justify-center gap-1 md:gap-2 pb-4  bottom-0 w-full">
+                    <div className="bottom-0 flex w-full justify-center gap-1 pb-4 md:gap-2">
                       <InfiniteLooper speed={60} direction="left">
                         {cliniqueClic.technologies.map((technology) => {
                           return (
-                            <div key={technology.text} className="pr-3 w-full ">
+                            <div key={technology.text} className="w-full pr-3">
                               <div
-                                className={`rounded-full w-full text-white ${technology.color} py-1 px-4 text-xs md:text-sm shadow-sm h-fit whitespace-nowrap`}
+                                className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
                               >
                                 {technology.text}
                               </div>{" "}
@@ -931,37 +920,34 @@ export default function Home() {
 
                   {/* ///////////////////////////// PARROT MENTOR PROJECT ///////////////////////////// */}
 
-       
                   <div
-                    className="shadow-xl relative flex flex-col bg-[#C0A5F9] rounded-md cursor-pointer"
+                    className="relative flex cursor-pointer flex-col rounded-md bg-[#C0A5F9] shadow-xl"
                     onClick={() => {
                       setState({ isPaneOpen: true });
                       setSelectedProject(parrotMentor);
                     }}
                   >
-                      <video
-                   className="rounded-t-md h-5/6"
-                        onMouseOver={(e) =>
-                          (e.target as HTMLVideoElement).play()
-                        }
-                        onMouseOut={(e) => {
-                          const video = e.target as HTMLVideoElement;
-                          video.pause();
-                          video.currentTime = 0;
-                        }}
-                        muted
-                        src={parrotMentor.video}
-                      />
+                    <video
+                      className="h-5/6 rounded-t-md"
+                      onMouseOver={(e) => (e.target as HTMLVideoElement).play()}
+                      onMouseOut={(e) => {
+                        const video = e.target as HTMLVideoElement;
+                        video.pause();
+                        video.currentTime = 0;
+                      }}
+                      muted
+                      src={parrotMentor.video}
+                    />
 
-<div className="flex justify-center gap-1 md:gap-2 pb-4 h-1/6 bottom-0 w-full">
+                    <div className="bottom-0 flex h-1/6 w-full justify-center gap-1 pb-4 md:gap-2">
                       {parrotMentor.technologies.map((technology) => {
                         return (
                           <div
                             key={technology.text}
-                            className="flex justify-center "
+                            className="flex justify-center"
                           >
                             <div
-                              className={`rounded-full w-full text-white ${technology.color} py-1 px-4 text-xs md:text-sm shadow-sm h-fit whitespace-nowrap`}
+                              className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
                             >
                               {technology.text}
                             </div>{" "}
@@ -974,35 +960,33 @@ export default function Home() {
                   {/* ///////////////////////////// LALALAND YOGA PROJECT ///////////////////////////// */}
 
                   <div
-                    className="shadow-xl relative flex flex-col bg-white rounded-md cursor-pointer w-full"
+                    className="relative flex w-full cursor-pointer flex-col rounded-md bg-white shadow-xl"
                     onClick={() => {
                       setState({ isPaneOpen: true });
                       setSelectedProject(lalalandYoga);
                     }}
                   >
-                      <video
-              className="rounded-t-md lg:h-5/6"
-                        onMouseOver={(e) =>
-                          (e.target as HTMLVideoElement).play()
-                        }
-                        onMouseOut={(e) => {
-                          const video = e.target as HTMLVideoElement;
-                          video.pause();
-                          video.currentTime = 0;
-                        }}
-                        muted
-                        src={lalalandYoga.video}
-                      />
+                    <video
+                      className="rounded-t-md lg:h-5/6"
+                      onMouseOver={(e) => (e.target as HTMLVideoElement).play()}
+                      onMouseOut={(e) => {
+                        const video = e.target as HTMLVideoElement;
+                        video.pause();
+                        video.currentTime = 0;
+                      }}
+                      muted
+                      src={lalalandYoga.video}
+                    />
 
-<div className="flex justify-center gap-1 md:gap-2 pb-4 lg:h-1/6 bottom-0 w-full">
+                    <div className="bottom-0 flex w-full justify-center gap-1 pb-4 md:gap-2 lg:h-1/6">
                       {lalalandYoga.technologies.map((technology) => {
                         return (
                           <div
                             key={technology.text}
-                            className="flex justify-center "
+                            className="flex justify-center"
                           >
                             <div
-                              className={`rounded-full w-full text-white ${technology.color} py-1 px-4 text-xs md:text-sm shadow-sm h-fit whitespace-nowrap`}
+                              className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
                             >
                               {technology.text}
                             </div>{" "}
@@ -1011,49 +995,77 @@ export default function Home() {
                       })}
                     </div>
                   </div>
-
                 </div>
                 {language == "en" ? (
-                  <p className="text-center  md:pl-14">
-                    This portfolio was developped using <span className="rounded-full w-full text-white bg-react-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">ReactJS</span>, <span className="rounded-full w-full text-white bg-next-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">Next.js</span>, <span className="rounded-full w-full text-white bg-typescript-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">Typescript</span> and <span className="rounded-full w-full text-white bg-tailwind-color py-1 px-4 shadow-sm h-fit whitespace-nowrap leading-10">Tailwind CSS</span>.</p>
+                  <p className="text-center md:pl-14">
+                    This portfolio was developped using{" "}
+                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-react-color px-4 py-1 text-white shadow-sm">
+                      ReactJS
+                    </span>
+                    ,{" "}
+                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-next-color px-4 py-1 text-white shadow-sm">
+                      Next.js
+                    </span>
+                    ,{" "}
+                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-typescript-color px-4 py-1 text-white shadow-sm">
+                      Typescript
+                    </span>{" "}
+                    and{" "}
+                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-tailwind-color px-4 py-1 leading-10 text-white shadow-sm">
+                      Tailwind CSS
+                    </span>
+                    .
+                  </p>
                 ) : (
-                  <p className="text-center  md:pl-14 h-10">
-                    Ce portfolio a été développé en utilisant <span className="rounded-full w-full text-white bg-react-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">ReactJS</span>, <span className="rounded-full w-full text-white bg-next-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">Next.js</span>, <span className="rounded-full w-full text-white bg-typescript-color py-1 px-4 shadow-sm h-fit whitespace-nowrap">Typescript</span> et <span className="rounded-full w-full text-white bg-tailwind-color py-1 px-4 shadow-sm h-fit whitespace-nowrap leading-10">Tailwind CSS</span>.
+                  <p className="h-10 text-center md:pl-14">
+                    Ce portfolio a été développé en utilisant{" "}
+                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-react-color px-4 py-1 text-white shadow-sm">
+                      ReactJS
+                    </span>
+                    ,{" "}
+                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-next-color px-4 py-1 text-white shadow-sm">
+                      Next.js
+                    </span>
+                    ,{" "}
+                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-typescript-color px-4 py-1 text-white shadow-sm">
+                      Typescript
+                    </span>{" "}
+                    et{" "}
+                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-tailwind-color px-4 py-1 leading-10 text-white shadow-sm">
+                      Tailwind CSS
+                    </span>
+                    .
                   </p>
                 )}
               </Fade>
             </div>
-
           </div>
 
           {/* ///////////////////////////// CURRICULUM VITAE SECTION ///////////////////////////// */}
 
-          <div className="w-full  h-full bg-custom-gray ">
-            <div className=" max-w-screen-2xl mx-auto">
+          <div className="h-full w-full bg-custom-gray">
+            <div className="mx-auto max-w-screen-2xl">
               <Fade duration={1500} triggerOnce>
-                <div className="flex flex-col md:flex-row p-5 md:p-20 py-20 gap-20">
-                  <div className=" md:w-1/4 flex justify-center text-custom-purple relative items-center">
-                    <p className="md:-rotate-90 flex items-center text-3xl md:text-7xl whitespace-nowrap absolute">
+                <div className="flex flex-col gap-20 p-5 py-20 md:flex-row md:p-20">
+                  <div className="relative flex items-center justify-center text-custom-purple md:w-1/4">
+                    <p className="absolute flex items-center whitespace-nowrap text-3xl md:-rotate-90 md:text-7xl">
                       Curriculum Vitaea.
                     </p>
                   </div>
 
-                  <div className=" md:w-3/4 h-full flex justify-center">
-                    <div
-                      className="bg-custom-gray
-                 shadow-lg relative"
-                    >
+                  <div className="flex h-full justify-center md:w-3/4">
+                    <div className="relative bg-custom-gray shadow-lg">
                       {language == "en" ? (
-                        <div className="opacity-0 hover:opacity-100 bg-custom-purple bg-opacity-5 backdrop-blur-sm flex cursor-pointer absolute h-full w-full justify-center items-center transition-all duration-200 ease-in-out">
+                        <div className="absolute flex h-full w-full cursor-pointer items-center justify-center bg-custom-purple bg-opacity-5 opacity-0 backdrop-blur-sm transition-all duration-200 ease-in-out hover:opacity-100">
                           <a
-                            href="https://drive.google.com/uc?export=download&id=19YAobmTBActnU1EVxhNuYG6tNKWvayAe"
+                            href="https://drive.google.com/uc?export=download&id=1RQVvwJUIy7xn_uURk4SKFlbcvVKRHaxP"
                             className="btn"
                           >
                             Download CV
                           </a>
                         </div>
                       ) : (
-                        <div className="opacity-0 hover:opacity-100 bg-custom-purple bg-opacity-5 backdrop-blur-sm flex cursor-pointer absolute h-full w-full justify-center items-center transition-all duration-200 ease-in-out">
+                        <div className="absolute flex h-full w-full cursor-pointer items-center justify-center bg-custom-purple bg-opacity-5 opacity-0 backdrop-blur-sm transition-all duration-200 ease-in-out hover:opacity-100">
                           <a
                             href="https://drive.google.com/uc?export=download&id=1nKQ-NyqwhgDC3vV36BwIWGIiTMaH6XQJ"
                             className="btn"
@@ -1078,93 +1090,105 @@ export default function Home() {
           {/* ///////////////////////////// CONTACT SECTION ///////////////////////////// */}
 
           <div
-            className=" bg-gradient-to-t from-custom-purple  to-[#ECECEC] pb-5"
+            className="bg-gradient-to-t from-custom-purple to-[#ECECEC] pb-5"
             id="contact"
           >
-            <div className="w-full flex md:flex-row flex-col border-right h-full p-5 md:p-20 py-20 gap-20 max-w-screen-2xl mx-auto">
-              <div className=" md:w-1/4  flex justify-center text-custom-purple md:text-white relative items-center">
-                <div className="md:-rotate-90 flex items-center text-3xl md:text-7xl whitespace-nowrap absolute">
+            <div className="border-right mx-auto flex h-full w-full max-w-screen-2xl flex-col gap-20 p-5 py-20 md:flex-row md:p-20">
+              <div className="relative flex items-center justify-center text-custom-purple md:w-1/4 md:text-white">
+                <div className="absolute flex items-center whitespace-nowrap text-3xl md:-rotate-90 md:text-7xl">
                   <Fade duration={1500} triggerOnce>
                     {language == "en" ? "Let’s connect." : "Connectons-nous."}
                   </Fade>
                 </div>
               </div>
 
-              <div className=" w-full md:w-2/3 h-full ">
-                <p className="pb-10 text-lg font-normal text-gray-800 text-center md:text-start">
+              <div className="h-full w-full md:w-2/3">
+                <p className="pb-10 text-center text-lg font-normal text-gray-800 md:text-start">
                   {language == "en"
                     ? "If you are interested to work with me, feel free to send me a message!"
                     : "Si vous êtes intéressé(e) à travailler avec moi, n'hésitez pas à m'envoyer un message !"}
                 </p>
                 <Fade duration={1500} triggerOnce>
-                  <form
-                    onSubmit={sendEmail}
-                    className="space-y-8"
-                    id="form-email"
-                  >
-                    <div>
-                      <label className="block mb-2 text-white">
-                        {language == "en" ? "Your name" : "Votre nom"}
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="from_name"
-                        className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 "
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block mb-2 text-white">
-                        {language == "en" ? "Your email" : "Votre courriel"}
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="from_email"
-                        className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
-                        required
-                      />
-                    </div>
+                  <form onSubmit={sendEmail} className="" id="form-email">
+                    <div className="space-y-8 rounded-lg bg-white p-10">
+                      <div className="relative h-11 w-full min-w-[200px]">
+                        <input
+                          id="name"
+                          name="from_name"
+                          required
+                          placeholder={
+                            language == "en" ? "Your name" : "Votre nom"
+                          }
+                          className="border-blue-gray-200 text-blue-gray-900 placeholder-shown:border-blue-gray-200 disabled:bg-blue-gray-50 peer h-full w-full border-b bg-transparent pb-1.5 pt-4 outline outline-0 transition-all placeholder:opacity-0 focus:border-gray-500 focus:outline-0 focus:placeholder:opacity-100 disabled:border-0"
+                        />
+                        <label className="after:content[''] peer-placeholder-shown:text-blue-gray-500 peer-disabled:peer-placeholder-shown:text-blue-gray-500 pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent">
+                          {language == "en" ? "Name" : "Nom"}
+                        </label>
+                      </div>
 
-                    <div className="sm:col-span-2">
-                      <label className="block mb-2 text-white ">
-                        {language == "en" ? "Your message" : "Votre message"}
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={6}
-                        className="block p-2.5 w-full bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 "
-                      ></textarea>
-                    </div>
-                    <button className="cta flex items-baseline" type="submit">
-                      {language == "en" ? (
-                        <span className="hover-underline-animation">
-                          {" "}
-                          {sendText}{" "}
-                        </span>
-                      ) : (
-                        <span className="hover-underline-animation">
-                          {" "}
-                          {sendTextFr}{" "}
-                        </span>
-                      )}
-                      <svg
-                        id="arrow-horizontal"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="30"
-                        height="10"
-                        viewBox="0 0 46 16"
+                      <div className="relative h-11 w-full min-w-[200px]">
+                        <input
+                          id="email"
+                          name="from_email"
+                          required
+                          placeholder={
+                            language == "en" ? "Your email" : "Votre courriel"
+                          }
+                          className="border-blue-gray-200 text-blue-gray-900 placeholder-shown:border-blue-gray-200 disabled:bg-blue-gray-50 peer h-full w-full border-b bg-transparent pb-1.5 pt-4 outline outline-0 transition-all placeholder:opacity-0 focus:border-gray-500 focus:outline-0 focus:placeholder:opacity-100 disabled:border-0"
+                        />
+                        <label className="after:content[''] peer-placeholder-shown:text-blue-gray-500 peer-disabled:peer-placeholder-shown:text-blue-gray-500 pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent">
+                          {language == "en" ? "Email" : "Courriel"}
+                        </label>
+                      </div>
+
+                      <div className="relative h-auto w-full min-w-[200px]">
+                        <textarea
+                          id="message"
+                          name="message"
+                          required
+                          placeholder={
+                            language === "en" ? "Your message" : "Votre message"
+                          }
+                          className="border-blue-gray-200 -mb-1 text-blue-gray-900 placeholder-shown:border-blue-gray-200 disabled:bg-blue-gray-50 peer h-full w-full border-b border-l-0 border-r-0 border-t-0 bg-transparent pb-1.5 pt-4 pl-0 outline outline-0 transition-all placeholder:opacity-0 focus:border-gray-500 focus:outline-0 focus:placeholder:opacity-100 disabled:border-0"
+
+                          rows={6}
+                        ></textarea>
+                        <label className="after:content[''] peer-placeholder-shown:text-blue-gray-500 peer-disabled:peer-placeholder-shown:text-blue-gray-500 pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent">
+                          {language === "en" ? "Message" : "Message"}
+                        </label>
+                      </div>
+
+                      <button
+                        className="cta flex items-baseline pt-5"
+                        type="submit"
                       >
-                        <path
-                          id="Path_10"
-                          data-name="Path 10"
-                          d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
-                          transform="translate(30)"
-                        ></path>
-                      </svg>
-                    </button>
+                        {language == "en" ? (
+                          <span className="hover-underline-animation">
+                            {" "}
+                            {sendText}{" "}
+                          </span>
+                        ) : (
+                          <span className="hover-underline-animation">
+                            {" "}
+                            {sendTextFr}{" "}
+                          </span>
+                        )}
+                        <svg
+                          id="arrow-horizontal"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="30"
+                          height="10"
+                          viewBox="0 0 46 16"
+                        >
+                          <path
+                            id="Path_10"
+                            data-name="Path 10"
+                            d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                            transform="translate(30)"
+                          ></path>
+                        </svg>
+                      </button>
+                    </div>
                   </form>
                 </Fade>
               </div>
@@ -1172,11 +1196,19 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-end w-full h-20  relative">    
-      <div className="flex  justify-center items-center w-10 md:w-14  bg-white shadow rounded -top-5 md:-top-7 absolute cursor-pointer" onClick={() =>  window.scrollTo(0, 0)} >
+      <div className="relative flex h-20 w-full items-end justify-center">
+        <div
+          className="absolute -top-5 flex w-10 cursor-pointer items-center justify-center rounded bg-white shadow md:-top-7 md:w-14"
+          onClick={() => window.scrollTo(0, 0)}
+        >
           <img className="scale-125" src={LogoNoir.src} alt="logo" />
         </div>
-       <p className="p-4">{language == "en" ? "© 2024 Diana Farhat. All Rights Reserved." : "© 2024 Diana Farhat. Tous droits réservés."}</p></div>
+        <p className="p-4">
+          {language == "en"
+            ? "© 2024 Diana Farhat. All Rights Reserved."
+            : "© 2024 Diana Farhat. Tous droits réservés."}
+        </p>
+      </div>
     </main>
   );
 }
