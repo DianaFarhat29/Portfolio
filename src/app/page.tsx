@@ -39,6 +39,12 @@ import Help from "./gifs/images/aide.png";
 import Next from "./gifs/images/next.webp";
 import Anglais from "./gifs/images/united-states.png";
 import Francais from "./gifs/images/france.png";
+import PetCarePlaceholder from "./gifs/images/FramePetCare.png";
+import PenduPlaceholder from "./gifs/images/FramePendu.png";
+import GradeFlowPlaceholder from "./gifs/images/FrameGradeFlow.png";
+import CliniqueClicPlaceholder from "./gifs/images/FrameClinique.png";
+import ParrotMentorPlaceholder from "./gifs/images/FrameParrot.png";
+import LalalandYogaPlaceholder from "./gifs/images/FrameLalaland.png";
 
 ///////////////////////////// OTHER IMPORTS ///////////////////////////////
 
@@ -50,6 +56,8 @@ import emailjs from "emailjs-com";
 import { Fade } from "react-awesome-reveal";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { Textarea } from "@material-tailwind/react";
+import ProjectSection from "./components/ProjectSection";
+import { Project } from "./interfaces";
 
 ///////////////////////////// TECHNOLOGIES IMAGES CONSTANTS ///////////////////////////////
 
@@ -97,7 +105,7 @@ const windowsForm = { color: "bg-windowsforms-color", text: "Windows Forms" };
 
 ///////////////////////////// PROJECTS DATA CONSTANTS ///////////////////////////////
 
-const petCare = {
+const petCare: Project = {
   title: "PetCare Tracker",
   aboutFr:
     "Développement d'une application web conviviale de suivi des soins pour animaux de compagnie conçue pour aider les propriétaires à gérer les rendez-vous, à créer des profils d'animaux personnalisés et à obtenir des conseils sur les soins quotidiens. Elle est développée à l'aide d'Angular, TypeScript, Spring Boot, MySQL et Bootstrap. De plus, elle dispose d'un compte administrateur avec des fonctions d'administration avancées.",
@@ -107,9 +115,10 @@ const petCare = {
   github: "https://github.com/DianaFarhat29/PetCare-Tracker.git",
   technologies: [html5, angular, typescript, java, spring, mysql, bootstrap],
   website: "",
+  placeholder: PetCarePlaceholder.src,
 };
 
-const pendu = {
+const pendu: Project = {
   title: "Le Pendu",
   aboutFr:
     "Développement d'une application WPF en C# utilisant Entity Framework, qui redonne vie au jeu classique du «Pendu» avec un gameplay captivant, des paramètres personnalisables, une page pour consulter l'historique de vos parties et la possibilité de personnaliser le dictionnaire de mots en anglais et en français.",
@@ -119,9 +128,10 @@ const pendu = {
   github: "https://github.com/DianaFarhat29/BonhommePendu.git",
   technologies: [wpf, csharp, entityFramework],
   website: "",
+  placeholder: PenduPlaceholder.src,
 };
 
-const gradeFlow = {
+const gradeFlow: Project = {
   title: "GradeFlow",
   aboutFr:
     "Une application web de gestion des étudiants basée sur le web, utilisant Java, Spring, Thymeleaf, HTML, Tailwind CSS et Javascript. Elle comprend l'authentification des utilisateurs et la gestion des étudiants, des cours et des notes.",
@@ -139,9 +149,10 @@ const gradeFlow = {
     mysql,
   ],
   website: "",
+  placeholder: GradeFlowPlaceholder.src,
 };
 
-const cliniqueClic = {
+const cliniqueClic: Project = {
   title: "Clinique Clic",
   aboutFr:
     "Développement d'un système sécurisé de prise de rendez-vous médicaux utilisant Java, Spring Boot, MySQL et Bootstrap. Mise en oeuvre de fonctionnalités telles que la réservation de rendez-vous, l'échange de documents et d’un tableau de bord administratif.",
@@ -151,9 +162,10 @@ const cliniqueClic = {
   github: "https://github.com/DianaFarhat29/Clinique-Clic.git",
   technologies: [html5, bootstrap, javascript, java, spring, thymeleaf, mysql],
   website: "",
+  placeholder: CliniqueClicPlaceholder.src,
 };
 
-const parrotMentor = {
+const parrotMentor: Project = {
   title: "Parrot Mentor",
   aboutFr:
     "Création d'une application Windows Forms en C# pour la gestion des étudiants et des programmes reliés d'établissements d'enseignement, .",
@@ -163,9 +175,10 @@ const parrotMentor = {
   github: "https://github.com/DianaFarhat29/ParrotMentor.git",
   technologies: [windowsForm, csharp],
   website: "",
+  placeholder: ParrotMentorPlaceholder.src,
 };
 
-const lalalandYoga = {
+const lalalandYoga: Project = {
   title: "Lalaland Yoga",
   aboutFr:
     "Conception d'un site web visuellement attrayant pour une retraite de yoga sur lalalandyoga.com, utilisant HTML5 et Tailwind CSS. Intégration d'un formulaire de contact API pour simplifier la communication client.",
@@ -175,6 +188,7 @@ const lalalandYoga = {
   github: "https://github.com/DianaFarhat29/Lalaland-Yoga-Retreats.git",
   technologies: [html5, tailwindCss, javascript],
   website: "https://lalalandyoga.com/",
+  placeholder: LalalandYogaPlaceholder.src,
 };
 
 export default function Home() {
@@ -182,7 +196,9 @@ export default function Home() {
     isPaneOpen: false,
   });
 
-  const [selectedProject, setSelectedProject] = useState(petCare);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(
+    petCare,
+  ); // Ensure type is Project or null
   const [hoveredProject, setHoveredProject] = useState("");
 
   const [sendText, setSendText] = useState("Send");
@@ -190,7 +206,6 @@ export default function Home() {
 
   const [language, setLanguage] = useState("fr");
   const [changingLanguage, setChangingLanguage] = useState(false);
-
   ///////////////////////////// EMAILJS FUNCTION ///////////////////////////////
 
   function sendEmail(event: any) {
@@ -411,7 +426,7 @@ export default function Home() {
                 <div className="flex w-full flex-col justify-center gap-2 md:flex-1">
                   <Fade cascade triggerOnce damping={0.5} duration={1000}>
                     <p className="text-center text-2xl font-medium text-custom-purple md:text-left">
-                      {language == "en" ? "ABOUT ME" : "À PROPOS"}
+                      {language == "en" ? "About me" : "À propos"}
                     </p>
                     <p className="text-center font-light text-black md:text-left">
                       {language == "en"
@@ -629,7 +644,7 @@ export default function Home() {
               <div className="flex w-full flex-row-reverse items-center justify-center gap-2 md:flex-row md:pl-14">
                 <Fade duration={1500} triggerOnce>
                   <p className="text-left text-3xl font-medium text-custom-purple md:text-5xl">
-                    {language == "en" ? "MY PROJECTS." : "Mes projets."}
+                    {language == "en" ? "My projects." : "Mes projets."}
                   </p>
                   <div className="group relative">
                     <img
@@ -649,369 +664,31 @@ export default function Home() {
                 </Fade>
               </div>
 
-              {/* ///////////////////////////// RIGHT PANNEL SLIDE FOR PROJECT DESCRIPTION ///////////////////////////// */}
-
-              <SlidingPane
-                className="some-custom-class"
-                overlayClassName="some-custom-overlay-class "
-                title={language == "en" ? "Go back" : "Retour"}
-                isOpen={state.isPaneOpen}
-                width="60%"
-                onRequestClose={() => {
-                  setState({ isPaneOpen: false });
-                }}
-              >
-                {selectedProject && (
-                  <div className="flex flex-col gap-10">
-                    <div className="flex flex-col gap-5 pt-5">
-                      <p className="text-2xl font-semibold">
-                        {selectedProject.title}
-                      </p>
-
-                      <video controls={false} autoPlay className="rounded-md">
-                        <source src={selectedProject.video} type="video/mp4" />
-                      </video>
-                    </div>
-
-                    {/* ///////////////////////////// ABOUT THE PROJECT ///////////////////////////// */}
-
-                    <div className="flex flex-col gap-5">
-                      <p className="font-semibold">
-                        {" "}
-                        {language == "en" ? "About" : "À propos"}
-                      </p>
-                      {language == "en" ? (
-                        <p className="">{selectedProject.about}</p>
-                      ) : (
-                        <p>{selectedProject.aboutFr}</p>
-                      )}
-                    </div>
-
-                    {/* ///////////////////////////// PROJECT TECHNOLOGIES ///////////////////////////// */}
-
-                    <div className="flex flex-col gap-5">
-                      <p className="font-semibold">Technologies</p>
-                      <div className="flex w-full flex-wrap gap-3 whitespace-nowrap">
-                        {selectedProject.technologies.map((technology) => {
-                          return (
-                            <div
-                              key={technology.text}
-                              className={`rounded-full text-white ${technology.color} whitespace-nowrap px-4 py-1 text-white shadow-md`}
-                            >
-                              {" "}
-                              {technology.text}{" "}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    {/* ///////////////////////////// GITHUB LINK OF PROJECT ///////////////////////////// */}
-
-                    <div className="flex flex-col gap-5 pt-2">
-                      <div className="flex items-center gap-2">
-                        <a
-                          href={selectedProject.github}
-                          target="blank"
-                          className="h-auto w-6"
-                        >
-                          <img src={Github2.src} alt="" />
-                        </a>{" "}
-                        <p className="font-semibold">Github</p>
-                      </div>
-                      <a
-                        href={selectedProject.github}
-                        className="text-gray-500"
-                        target="blank"
-                      >
-                        {selectedProject.github}
-                      </a>{" "}
-                    </div>
-
-                    {/* ///////////////////////////// WEBSITE LINK OF PROJECT ///////////////////////////// */}
-
-                    {selectedProject.website !== "" && (
-                      <div className="flex flex-col gap-5 pt-2">
-                        <div className="flex items-center gap-2">
-                          <a
-                            href={selectedProject.website}
-                            target="blank"
-                            className="h-auto w-6"
-                          >
-                            <img src={Website.src} alt="" />
-                          </a>{" "}
-                          <p className="font-semibold">
-                            {language == "en" ? "Website" : "Site web"}
-                          </p>
-                        </div>
-                        <a
-                          href={selectedProject.website}
-                          className="text-gray-500"
-                          target="blank"
-                        >
-                          {selectedProject.website}
-                        </a>{" "}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </SlidingPane>
+              <ProjectSection
+                language={language}
+                selectedProject={selectedProject}
+                state={state}
+                setState={setState}
+                setSelectedProject={setSelectedProject}
+              />
 
               <Fade duration={1500} triggerOnce>
-                {/* ///////////////////////////// GRID ///////////////////////////// */}
-
-                <div className="grid w-full grid-flow-row grid-cols-1 gap-10 md:pl-14 lg:grid-cols-2">
-                  <div
-                    className="relative flex cursor-pointer flex-col rounded-md bg-[#56D4E0] shadow-xl"
-                    onClick={() => {
-                      setState({ isPaneOpen: true });
-                      setSelectedProject(petCare);
-                    }}
-                  >
-                    {/* ///////////////////////////// PETCARE TRACKER PROJECT ///////////////////////////// */}
-
-                    <video
-                      className="h-5/6 rounded-t-md"
-                      onMouseOver={(e) => (e.target as HTMLVideoElement).play()}
-                      onMouseOut={(e) => {
-                        const video = e.target as HTMLVideoElement;
-                        video.pause();
-                        video.currentTime = 0;
-                      }}
-                      muted
-                      src={petCare.video}
-                    />
-
-                    <div className="bottom-0 flex h-1/6 w-full justify-center gap-1 pb-4 md:gap-2">
-                      <InfiniteLooper speed={60} direction="left">
-                        {petCare.technologies.map((technology) => {
-                          return (
-                            <div key={technology.text} className="w-full pr-3">
-                              <div
-                                className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
-                              >
-                                {technology.text}
-                              </div>{" "}
-                            </div>
-                          );
-                        })}
-                      </InfiniteLooper>
-                    </div>
-                  </div>
-
-                  {/* ///////////////////////////// LE PENDU PROJECT ///////////////////////////// */}
-
-                  <div className="relative flex flex-col rounded-md bg-white shadow-xl">
-                    <div
-                      className="relative flex cursor-pointer flex-col rounded-md bg-white shadow-xl"
-                      onClick={() => {
-                        setState({ isPaneOpen: true });
-                        setSelectedProject(pendu);
-                      }}
-                    >
-                      <video
-                        className="h-5/6 rounded-t-md"
-                        onMouseOver={(e) =>
-                          (e.target as HTMLVideoElement).play()
-                        }
-                        onMouseOut={(e) => {
-                          const video = e.target as HTMLVideoElement;
-                          video.pause();
-                          video.currentTime = 0;
-                        }}
-                        muted
-                        src={pendu.video}
-                      />
-
-                      <div className="bottom-0 flex h-1/6 w-full justify-center gap-1 pb-4 md:gap-2">
-                        {pendu.technologies.map((technology) => {
-                          return (
-                            <div
-                              key={technology.text}
-                              className="flex justify-center"
-                            >
-                              <div
-                                className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
-                              >
-                                {technology.text}
-                              </div>{" "}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* ///////////////////////////// GRADEFLOW PROJECT ///////////////////////////// */}
-
-                  <div
-                    className="relative flex cursor-pointer flex-col rounded-md bg-[#1F2936] shadow-xl"
-                    onClick={() => {
-                      setState({ isPaneOpen: true });
-                      setSelectedProject(gradeFlow);
-                    }}
-                  >
-                    <video
-                      className="rounded-t-md"
-                      onMouseOver={(e) => (e.target as HTMLVideoElement).play()}
-                      onMouseOut={(e) => {
-                        const video = e.target as HTMLVideoElement;
-                        video.pause();
-                        video.currentTime = 0;
-                      }}
-                      muted
-                      src={gradeFlow.video}
-                    />
-
-                    <div className="bottom-0 flex w-full justify-center gap-1 pb-4 md:gap-2">
-                      <InfiniteLooper speed={60} direction="left">
-                        {gradeFlow.technologies.map((technology) => {
-                          return (
-                            <div key={technology.text} className="w-full pr-3">
-                              <div
-                                className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
-                              >
-                                {technology.text}
-                              </div>{" "}
-                            </div>
-                          );
-                        })}
-                      </InfiniteLooper>
-                    </div>
-                  </div>
-
-                  {/* ///////////////////////////// CLINIQUE CLIC PROJECT ///////////////////////////// */}
-
-                  <div
-                    className="relative flex cursor-pointer flex-col rounded-md bg-[#618CC6] shadow-xl"
-                    onClick={() => {
-                      setState({ isPaneOpen: true });
-                      setSelectedProject(cliniqueClic);
-                    }}
-                  >
-                    <video
-                      className="rounded-t-md"
-                      onMouseOver={(e) => (e.target as HTMLVideoElement).play()}
-                      onMouseOut={(e) => {
-                        const video = e.target as HTMLVideoElement;
-                        video.pause();
-                        video.currentTime = 0;
-                      }}
-                      muted
-                      src={cliniqueClic.video}
-                    />
-
-                    <div className="bottom-0 flex w-full justify-center gap-1 pb-4 md:gap-2">
-                      <InfiniteLooper speed={60} direction="left">
-                        {cliniqueClic.technologies.map((technology) => {
-                          return (
-                            <div key={technology.text} className="w-full pr-3">
-                              <div
-                                className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
-                              >
-                                {technology.text}
-                              </div>{" "}
-                            </div>
-                          );
-                        })}
-                      </InfiniteLooper>
-                    </div>
-                  </div>
-
-                  {/* ///////////////////////////// PARROT MENTOR PROJECT ///////////////////////////// */}
-
-                  <div
-                    className="relative flex cursor-pointer flex-col rounded-md bg-[#C0A5F9] shadow-xl"
-                    onClick={() => {
-                      setState({ isPaneOpen: true });
-                      setSelectedProject(parrotMentor);
-                    }}
-                  >
-                    <video
-                      className="h-5/6 rounded-t-md"
-                      onMouseOver={(e) => (e.target as HTMLVideoElement).play()}
-                      onMouseOut={(e) => {
-                        const video = e.target as HTMLVideoElement;
-                        video.pause();
-                        video.currentTime = 0;
-                      }}
-                      muted
-                      src={parrotMentor.video}
-                    />
-
-                    <div className="bottom-0 flex h-1/6 w-full justify-center gap-1 pb-4 md:gap-2">
-                      {parrotMentor.technologies.map((technology) => {
-                        return (
-                          <div
-                            key={technology.text}
-                            className="flex justify-center"
-                          >
-                            <div
-                              className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
-                            >
-                              {technology.text}
-                            </div>{" "}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* ///////////////////////////// LALALAND YOGA PROJECT ///////////////////////////// */}
-
-                  <div
-                    className="relative flex w-full cursor-pointer flex-col rounded-md bg-white shadow-xl"
-                    onClick={() => {
-                      setState({ isPaneOpen: true });
-                      setSelectedProject(lalalandYoga);
-                    }}
-                  >
-                    <video
-                      className="rounded-t-md lg:h-5/6"
-                      onMouseOver={(e) => (e.target as HTMLVideoElement).play()}
-                      onMouseOut={(e) => {
-                        const video = e.target as HTMLVideoElement;
-                        video.pause();
-                        video.currentTime = 0;
-                      }}
-                      muted
-                      src={lalalandYoga.video}
-                    />
-
-                    <div className="bottom-0 flex w-full justify-center gap-1 pb-4 md:gap-2 lg:h-1/6">
-                      {lalalandYoga.technologies.map((technology) => {
-                        return (
-                          <div
-                            key={technology.text}
-                            className="flex justify-center"
-                          >
-                            <div
-                              className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
-                            >
-                              {technology.text}
-                            </div>{" "}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
                 {language == "en" ? (
                   <p className="text-center md:pl-14">
                     This portfolio was developped using{" "}
-                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-react-color px-4 py-1 text-white shadow-sm">
+                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-react-color px-4 py-1 leading-10 text-white shadow-sm">
                       ReactJS
                     </span>
                     ,{" "}
-                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-next-color px-4 py-1 text-white shadow-sm">
+                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-next-color px-4 py-1 leading-10 text-white shadow-sm">
                       Next.js
                     </span>
                     ,{" "}
-                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-typescript-color px-4 py-1 text-white shadow-sm">
-                      Typescript
+                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-typescript-color px-4 py-1 leading-10 text-white shadow-sm">
+                      TypeScript
                     </span>{" "}
                     and{" "}
-                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-tailwind-color px-4 py-1 leading-10 text-white shadow-sm">
+                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-tailwind-color px-4 py-1 leading-10  text-white shadow-sm">
                       Tailwind CSS
                     </span>
                     .
@@ -1019,16 +696,16 @@ export default function Home() {
                 ) : (
                   <p className="h-10 text-center md:pl-14">
                     Ce portfolio a été développé en utilisant{" "}
-                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-react-color px-4 py-1 text-white shadow-sm">
+                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-react-color px-4 py-1 leading-10 text-white shadow-sm">
                       ReactJS
                     </span>
                     ,{" "}
-                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-next-color px-4 py-1 text-white shadow-sm">
+                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-next-color px-4 py-1 leading-10 text-white shadow-sm">
                       Next.js
                     </span>
                     ,{" "}
-                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-typescript-color px-4 py-1 text-white shadow-sm">
-                      Typescript
+                    <span className="h-fit w-full whitespace-nowrap rounded-full bg-typescript-color px-4 py-1 leading-10 text-white shadow-sm">
+                      TypeScript
                     </span>{" "}
                     et{" "}
                     <span className="h-fit w-full whitespace-nowrap rounded-full bg-tailwind-color px-4 py-1 leading-10 text-white shadow-sm">
@@ -1054,9 +731,9 @@ export default function Home() {
                   </div>
 
                   <div className="flex h-full justify-center md:w-3/4">
-                    <div className="relative bg-custom-gray shadow-lg">
+                    <div className="relative rounded-lg bg-custom-gray shadow-lg">
                       {language == "en" ? (
-                        <div className="absolute flex h-full w-full cursor-pointer items-center justify-center bg-custom-purple bg-opacity-5 opacity-0 backdrop-blur-sm transition-all duration-200 ease-in-out hover:opacity-100">
+                        <div className="absolute rounded-lg flex h-full w-full cursor-pointer items-center justify-center bg-custom-purple bg-opacity-5 opacity-0 backdrop-blur-sm transition-all duration-200 ease-in-out hover:opacity-100">
                           <a
                             href="https://drive.google.com/uc?export=download&id=1RQVvwJUIy7xn_uURk4SKFlbcvVKRHaxP"
                             className="btn"
@@ -1065,7 +742,7 @@ export default function Home() {
                           </a>
                         </div>
                       ) : (
-                        <div className="absolute flex h-full w-full cursor-pointer items-center justify-center bg-custom-purple bg-opacity-5 opacity-0 backdrop-blur-sm transition-all duration-200 ease-in-out hover:opacity-100">
+                        <div className="absolute rounded-lg flex h-full w-full cursor-pointer items-center justify-center bg-custom-purple bg-opacity-5 opacity-0 backdrop-blur-sm transition-all duration-200 ease-in-out hover:opacity-100">
                           <a
                             href="https://drive.google.com/uc?export=download&id=1nKQ-NyqwhgDC3vV36BwIWGIiTMaH6XQJ"
                             className="btn"
@@ -1111,7 +788,7 @@ export default function Home() {
                 <Fade duration={1500} triggerOnce>
                   <form onSubmit={sendEmail} className="" id="form-email">
                     <div className="space-y-8 rounded-lg bg-white p-10">
-                      <div className="relative h-11 w-full min-w-[200px]">
+                      <div className="relative h-11 w-full min-w-[200px] rounded-none">
                         <input
                           id="name"
                           name="from_name"
@@ -1119,14 +796,14 @@ export default function Home() {
                           placeholder={
                             language == "en" ? "Your name" : "Votre nom"
                           }
-                          className="border-blue-gray-200 text-blue-gray-900 placeholder-shown:border-blue-gray-200 disabled:bg-blue-gray-50 peer h-full w-full border-b bg-transparent pb-1.5 pt-4 outline outline-0 transition-all placeholder:opacity-0 focus:border-gray-500 focus:outline-0 focus:placeholder:opacity-100 disabled:border-0"
+                          className="peer rounded-none h-full w-full border-b border-blue-gray-200 bg-transparent pb-1.5 pt-4 text-blue-gray-900 outline outline-0 transition-all placeholder:opacity-0 placeholder-shown:border-blue-gray-200 focus:border-gray-500 focus:outline-0 focus:placeholder:opacity-100 disabled:border-0 disabled:bg-blue-gray-50"
                         />
-                        <label className="after:content[''] peer-placeholder-shown:text-blue-gray-500 peer-disabled:peer-placeholder-shown:text-blue-gray-500 pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent">
+                        <label className="after:content[''] pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                           {language == "en" ? "Name" : "Nom"}
                         </label>
                       </div>
 
-                      <div className="relative h-11 w-full min-w-[200px]">
+                      <div className="relative h-11 w-full min-w-[200px] rounded-none">
                         <input
                           id="email"
                           name="from_email"
@@ -1134,14 +811,14 @@ export default function Home() {
                           placeholder={
                             language == "en" ? "Your email" : "Votre courriel"
                           }
-                          className="border-blue-gray-200 text-blue-gray-900 placeholder-shown:border-blue-gray-200 disabled:bg-blue-gray-50 peer h-full w-full border-b bg-transparent pb-1.5 pt-4 outline outline-0 transition-all placeholder:opacity-0 focus:border-gray-500 focus:outline-0 focus:placeholder:opacity-100 disabled:border-0"
+                          className="peer rounded-none h-full w-full border-b border-blue-gray-200 bg-transparent pb-1.5 pt-4 text-blue-gray-900 outline outline-0 transition-all placeholder:opacity-0 placeholder-shown:border-blue-gray-200 focus:border-gray-500 focus:outline-0 focus:placeholder:opacity-100 disabled:border-0 disabled:bg-blue-gray-50"
                         />
-                        <label className="after:content[''] peer-placeholder-shown:text-blue-gray-500 peer-disabled:peer-placeholder-shown:text-blue-gray-500 pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent">
+                        <label className="after:content[''] pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                           {language == "en" ? "Email" : "Courriel"}
                         </label>
                       </div>
 
-                      <div className="relative h-auto w-full min-w-[200px]">
+                      <div className="relative h-auto w-full min-w-[200px] rounded-none">
                         <textarea
                           id="message"
                           name="message"
@@ -1149,11 +826,10 @@ export default function Home() {
                           placeholder={
                             language === "en" ? "Your message" : "Votre message"
                           }
-                          className="border-blue-gray-200 -mb-1 text-blue-gray-900 placeholder-shown:border-blue-gray-200 disabled:bg-blue-gray-50 peer h-full w-full border-b border-l-0 border-r-0 border-t-0 bg-transparent pb-1.5 pt-4 pl-0 outline outline-0 transition-all placeholder:opacity-0 focus:border-gray-500 focus:outline-0 focus:placeholder:opacity-100 disabled:border-0"
-
+                          className="peer -mb-1 h-full w-full border-b border-l-0 border-r-0 border-t-0 border-blue-gray-200 bg-transparent pb-1.5 pl-0 pt-4 text-blue-gray-900 outline outline-0 transition-all placeholder:opacity-0 placeholder-shown:border-blue-gray-200 focus:border-gray-500 focus:outline-0 focus:placeholder:opacity-100 disabled:border-0 disabled:bg-blue-gray-50"
                           rows={6}
                         ></textarea>
-                        <label className="after:content[''] peer-placeholder-shown:text-blue-gray-500 peer-disabled:peer-placeholder-shown:text-blue-gray-500 pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent">
+                        <label className="after:content[''] pointer-events-none absolute -top-1.5 left-0 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-gray-500 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:after:scale-x-100 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                           {language === "en" ? "Message" : "Message"}
                         </label>
                       </div>

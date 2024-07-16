@@ -32,6 +32,13 @@ module.exports = withMT({
         'thymeleaf-color': '#005f0f',
         'react-color': '#66dbfb',
         'next-color': '#181818',
+        'bg-petCare-color': '#56d4e0',
+        'bg-pendu-color': '#ffffff',
+        'bg-gradeFlow-color': '#e5e7eb',
+        'bg-cliniqueClic-color': '#618cc6',
+        'bg-parrotMentor-color': '#c1a5f9',
+        'bg-lalalandYoga-color': '#ffffff',
+
 
       },
       backgroundImage: {
