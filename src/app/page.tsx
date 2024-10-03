@@ -13,8 +13,8 @@ import Agile from "./gifs/images/agile.png";
 import ComputerDesktop from "./gifs/images/computer-desktop.png";
 import Development from "./gifs/images/development.png";
 import Puzzle from "./gifs/images/puzzle.png";
-import CV from "./gifs/images/cvScreenshot.png";
-import CvFr from "./gifs/images/cvFr.png";
+import CV from "./gifs/images/CV_EN_Screenshot.png";
+import CvFr from "./gifs/images/CV_FR_Screenshot.png";
 import Html from "./gifs/images/HTML5.png";
 import Spring from "./gifs/images/spring.png";
 import Angular from "./gifs/images/angular-logo.png";
@@ -116,6 +116,7 @@ const petCare: Project = {
   technologies: [html5, angular, typescript, java, spring, mysql, bootstrap],
   website: "",
   placeholder: PetCarePlaceholder.src,
+  bgColor: "petCare-color"
 };
 
 const pendu: Project = {
@@ -129,6 +130,8 @@ const pendu: Project = {
   technologies: [wpf, csharp, entityFramework],
   website: "",
   placeholder: PenduPlaceholder.src,
+  bgColor: "pendu-color"
+
 };
 
 const gradeFlow: Project = {
@@ -150,6 +153,8 @@ const gradeFlow: Project = {
   ],
   website: "",
   placeholder: GradeFlowPlaceholder.src,
+  bgColor: "gradeFlow-color"
+
 };
 
 const cliniqueClic: Project = {
@@ -163,6 +168,8 @@ const cliniqueClic: Project = {
   technologies: [html5, bootstrap, javascript, java, spring, thymeleaf, mysql],
   website: "",
   placeholder: CliniqueClicPlaceholder.src,
+  bgColor: "cliniqueClic-color"
+
 };
 
 const parrotMentor: Project = {
@@ -176,6 +183,8 @@ const parrotMentor: Project = {
   technologies: [windowsForm, csharp],
   website: "",
   placeholder: ParrotMentorPlaceholder.src,
+  bgColor: "parrotMentor-color"
+
 };
 
 const lalalandYoga: Project = {
@@ -189,6 +198,8 @@ const lalalandYoga: Project = {
   technologies: [html5, tailwindCss, javascript],
   website: "https://lalalandyoga.com/",
   placeholder: LalalandYogaPlaceholder.src,
+  bgColor: "lalalandYoga-color"
+
 };
 
 export default function Home() {
@@ -330,8 +341,8 @@ export default function Home() {
       <div className="flex w-full flex-col md:flex-row-reverse">
         {/* ///////////////////////////// RIGHT SIDE NAV BAR ///////////////////////////// */}
 
-        {state.isPaneOpen == false && (
-          <div className="flex items-center justify-center bg-white p-2 md:h-full md:p-6">
+
+          <div className={`flex items-center justify-center bg-white p-2 md:h-full md:p-6 ${state.isPaneOpen && "opacity-0"}`}>
             <ul className="bottom-0 top-0 z-50 flex items-center justify-center gap-5 md:fixed md:w-5 md:flex-col">
               <li className="transition-all duration-200 hover:scale-125">
                 <a href="mailto:diana.farhat@outlook.com" target="blank">
@@ -355,7 +366,7 @@ export default function Home() {
               </li>
             </ul>
           </div>
-        )}
+       
 
         <div className="flex h-full w-full flex-col justify-stretch border-r border-r-custom-purple bg-custom-purple">
           <div className="bg-gradient-to-t from-custom-gray to-custom-purple">
@@ -735,7 +746,7 @@ export default function Home() {
                       {language == "en" ? (
                         <div className="absolute rounded-lg flex h-full w-full cursor-pointer items-center justify-center bg-custom-purple bg-opacity-5 opacity-0 backdrop-blur-sm transition-all duration-200 ease-in-out hover:opacity-100">
                           <a
-                            href="https://drive.google.com/uc?export=download&id=1RQVvwJUIy7xn_uURk4SKFlbcvVKRHaxP"
+                            href="https://drive.google.com/uc?export=download&id=18YuVwp7r4lx1wWi_g4MyxzsLW4Z3lR3B"
                             className="btn"
                           >
                             Download CV
@@ -744,7 +755,7 @@ export default function Home() {
                       ) : (
                         <div className="absolute rounded-lg flex h-full w-full cursor-pointer items-center justify-center bg-custom-purple bg-opacity-5 opacity-0 backdrop-blur-sm transition-all duration-200 ease-in-out hover:opacity-100">
                           <a
-                            href="https://drive.google.com/uc?export=download&id=1nKQ-NyqwhgDC3vV36BwIWGIiTMaH6XQJ"
+                            href="https://drive.google.com/uc?export=download&id=109iyiFUgUV3ZUce001WpB3WYXa2YIwId"
                             className="btn"
                           >
                             Téléchager CV

@@ -12,6 +12,7 @@ interface Technology {
     website: string;
     technologies: Technology[];
     placeholder: string; 
+    bgColor: string;
   }
 
   export type { Project, Technology };

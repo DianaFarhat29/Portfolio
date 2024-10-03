@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 interface ProjectVideoProps {
   videoSrc: string;
@@ -7,39 +7,53 @@ interface ProjectVideoProps {
 }
 
 const ProjectVideo: React.FC<ProjectVideoProps> = ({ videoSrc, altText, placeholderSrc }) => {
-  const [isVideoVisible, setIsVideoVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleMouseOver = () => {
-    setIsVideoVisible(true);
+    if (!isMobile && videoRef.current) {
+      videoRef.current.play();
+    }
   };
 
   const handleMouseOut = () => {
-    setIsVideoVisible(false);
+    if (!isMobile && videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
   };
 
   const handleClick = () => {
-    setIsVideoVisible(true);
+    if (isMobile) {
+      // handle mobile click event, such as showing the video in a modal
+    }
   };
 
   return (
     <div
-      className="h-5/6 rounded-t-md cursor-pointer "
+      className="h-5/6 rounded-t-md cursor-pointer"
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
       onClick={handleClick}
     >
-      {isVideoVisible ? (
-        <video
-          className="h-full w-full rounded-t-md"
-          muted
-          autoPlay
-          loop
-          playsInline
-          src={videoSrc}
-        />
-      ) : (
-        <img className="h-full w-full rounded-t-md" src={placeholderSrc} alt={altText} />
-      )}
+      <video
+        ref={videoRef}
+        className="h-full w-full rounded-t-md"
+        muted
+        playsInline
+        src={videoSrc}
+        poster={isMobile ? placeholderSrc : undefined}
+      />
     </div>
   );
 };

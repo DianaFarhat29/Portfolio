@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import ProjectVideo from "../components/projectVideo";
@@ -41,6 +41,7 @@ const petCare: Project = {
   technologies: [html5, angular, typescript, java, spring, mysql, bootstrap],
   website: "",
   placeholder: PetCarePlaceholder.src,
+  bgColor: "#56d4e0"
 };
 
 const pendu: Project = {
@@ -54,6 +55,8 @@ const pendu: Project = {
   technologies: [wpf, csharp, entityFramework],
   website: "",
   placeholder: PenduPlaceholder.src,
+  bgColor: "#ffffff"
+
 };
 
 const gradeFlow: Project = {
@@ -75,6 +78,8 @@ const gradeFlow: Project = {
   ],
   website: "",
   placeholder: GradeFlowPlaceholder.src,
+  bgColor: "#e5e7eb"
+
 };
 
 const cliniqueClic: Project = {
@@ -88,12 +93,14 @@ const cliniqueClic: Project = {
   technologies: [html5, bootstrap, javascript, java, spring, thymeleaf, mysql],
   website: "",
   placeholder: CliniqueClicPlaceholder.src,
+  bgColor: "#618cc6"
+
 };
 
 const parrotMentor: Project = {
   title: "Parrot Mentor",
   aboutFr:
-    "Création d'une application Windows Forms en C# pour la gestion des étudiants et des programmes reliés d'établissements d'enseignement, .",
+    "Création d'une application Windows Forms en C# pour la gestion des étudiants et des programmes reliés à un établissement d'enseignement.",
   about:
     "A Windows Forms application in C#, managing students and programs of teaching establishments.",
   video: "/videos/ParrotMentor.mp4",
@@ -101,6 +108,8 @@ const parrotMentor: Project = {
   technologies: [windowsForm, csharp],
   website: "",
   placeholder: ParrotMentorPlaceholder.src,
+  bgColor: "#c1a5f9"
+
 };
 
 const lalalandYoga: Project = {
@@ -114,6 +123,8 @@ const lalalandYoga: Project = {
   technologies: [html5, tailwindCss, javascript],
   website: "https://lalalandyoga.com/",
   placeholder: LalalandYogaPlaceholder.src,
+  bgColor: "#ffffff"
+
 };
 
 interface ProjectSectionProps {
@@ -131,263 +142,138 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
   setState,
   setSelectedProject,
 }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="grid w-full grid-flow-row grid-cols-1 gap-10 md:pl-14 lg:grid-cols-2">
-      <div
-        className="relative flex cursor-pointer flex-col rounded-md bg-[#56d4e0] shadow-xl"
-        onClick={() => {
-          setState({ isPaneOpen: true });
-          setSelectedProject(petCare);
-        }}
-      >
-        <ProjectVideo
-          videoSrc={petCare.video}
-          altText="PetCare Tracker"
-          placeholderSrc={petCare.placeholder}
-        />
-        <div className="bottom-0 flex h-2/6 w-full justify-center gap-1 py-4 md:gap-2">
-          <InfiniteLooper speed={60} direction="left">
-            {petCare.technologies.map((technology) => (
-              <div key={technology.text} className="w-full pr-3">
-                <div
-                  className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
-                >
-                  {technology.text}
-                </div>
-              </div>
-            ))}
-          </InfiniteLooper>
-        </div>
-      </div>
-
-      <div
-        className="relative flex cursor-pointer flex-col rounded-md bg-[#ffffff] shadow-xl"
-        onClick={() => {
-          setState({ isPaneOpen: true });
-          setSelectedProject(pendu);
-        }}
-      >
-        <ProjectVideo
-          videoSrc={pendu.video}
-          altText="Pendu Tracker"
-          placeholderSrc={pendu.placeholder}
-        />
-        <div className="bottom-0 flex h-2/6 w-full justify-center gap-1 py-4 md:gap-2">
-          <InfiniteLooper speed={60} direction="left">
-            {pendu.technologies.map((technology) => (
-              <div key={technology.text} className="w-full pr-3">
-                <div
-                  className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
-                >
-                  {technology.text}
-                </div>
-              </div>
-            ))}
-          </InfiniteLooper>
-        </div>
-      </div>
-
-      <div
-        className="relative flex cursor-pointer flex-col rounded-md bg-[#e5e7eb] shadow-xl"
-        onClick={() => {
-          setState({ isPaneOpen: true });
-          setSelectedProject(gradeFlow);
-        }}
-      >
-        <ProjectVideo
-          videoSrc={gradeFlow.video}
-          altText="GradeFlow Tracker"
-          placeholderSrc={gradeFlow.placeholder}
-        />
-        <div className="bottom-0 flex h-2/6 w-full justify-center gap-1 py-4 md:gap-2">
-          <InfiniteLooper speed={60} direction="left">
-            {gradeFlow.technologies.map((technology) => (
-              <div key={technology.text} className="w-full pr-3">
-                <div
-                  className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
-                >
-                  {technology.text}
-                </div>
-              </div>
-            ))}
-          </InfiniteLooper>
-        </div>
-      </div>
-
-      <div
-        className="relative flex cursor-pointer flex-col rounded-md bg-[#618cc6] shadow-xl"
-        onClick={() => {
-          setState({ isPaneOpen: true });
-          setSelectedProject(cliniqueClic);
-        }}
-      >
-        <ProjectVideo
-          videoSrc={cliniqueClic.video}
-          altText="Clinique Clic"
-          placeholderSrc={cliniqueClic.placeholder}
-        />
-        <div className="bottom-0 flex h-2/6 w-full justify-center gap-1 py-4 md:gap-2">
-          <InfiniteLooper speed={60} direction="left">
-            {cliniqueClic.technologies.map((technology) => (
-              <div key={technology.text} className="w-full pr-3">
-                <div
-                  className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
-                >
-                  {technology.text}
-                </div>
-              </div>
-            ))}
-          </InfiniteLooper>
-        </div>
-      </div>
-
-      <div
-        className="relative flex cursor-pointer flex-col rounded-md bg-[#c1a5f9] shadow-xl"
-        onClick={() => {
-          setState({ isPaneOpen: true });
-          setSelectedProject(parrotMentor);
-        }}
-      >
-        <ProjectVideo
-          videoSrc={parrotMentor.video}
-          altText="PetCare Tracker"
-          placeholderSrc={parrotMentor.placeholder}
-        />
-        <div className="bottom-0 flex h-2/6 w-full justify-center gap-1 py-4 md:gap-2">
-          <InfiniteLooper speed={60} direction="left">
-            {parrotMentor.technologies.map((technology) => (
-              <div key={technology.text} className="w-full pr-3">
-                <div
-                  className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
-                >
-                  {technology.text}
-                </div>
-              </div>
-            ))}
-          </InfiniteLooper>
-        </div>
-      </div>
-
-      <div
-        className="relative flex cursor-pointer flex-col rounded-md bg-[#ffffff] shadow-xl"
-        onClick={() => {
-          setState({ isPaneOpen: true });
-          setSelectedProject(lalalandYoga);
-        }}
-      >
-        <ProjectVideo
-          videoSrc={lalalandYoga.video}
-          altText="PetCare Tracker"
-          placeholderSrc={lalalandYoga.placeholder}
-        />
-        <div className="bottom-0 flex h-2/6 w-full justify-center gap-1 py-4 md:gap-2">
-          <InfiniteLooper speed={60} direction="left">
-            {lalalandYoga.technologies.map((technology) => (
-              <div key={technology.text} className="w-full pr-3">
-                <div
-                  className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
-                >
-                  {technology.text}
-                </div>
-              </div>
-            ))}
-          </InfiniteLooper>
-        </div>
-      </div>
-
-      <SlidingPane
-  className="some-custom-class"
-  overlayClassName="some-custom-overlay-class"
-  title={language == "en" ? "Go back" : "Retour"}
-  isOpen={state.isPaneOpen}
-  width="80%"
-  onRequestClose={() => {
-    setState({ isPaneOpen: false });
-  }}
->
-  {selectedProject && (
-    <div className="flex flex-col gap-10 overflow-y-auto">
-      <div className="flex flex-col gap-5 pt-5">
-        <p className="text-2xl font-semibold">{selectedProject.title}</p>
-
-        <video controls={false} autoPlay className="rounded-md">
-          <source src={selectedProject.video} type="video/mp4" />
-        </video>
-      </div>
-
-      <div className="flex flex-col gap-5">
-        <p className="font-semibold">
-          {language == "en" ? "About" : "À propos"}
-        </p>
-        {language == "en" ? (
-          <p className="break-words">{selectedProject.about}</p>
-        ) : (
-          <p className="break-words">{selectedProject.aboutFr}</p>
-        )}
-      </div>
-
-      <div className="flex flex-col gap-5">
-        <p className="font-semibold">Technologies</p>
-        <div className="flex w-full flex-wrap gap-3">
-          {selectedProject.technologies.map((technology: any) => (
-            <div
-              key={technology.text}
-              className={`rounded-full text-white ${technology.color} px-4 py-1 text-white shadow-md`}
-            >
-              {technology.text}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-5 pt-2">
-        <div className="flex items-center gap-2">
-          <a
-            href={selectedProject.github}
-            target="blank"
-            className="h-auto w-6"
-          >
-            <img src={Github2.src} alt="" />
-          </a>
-          <p className="font-semibold">Github</p>
-        </div>
-        <a
-          href={selectedProject.github}
-          className="text-gray-500 break-words"
-          target="blank"
+      {[petCare, lalalandYoga, gradeFlow, cliniqueClic, parrotMentor, pendu].map((project) => (
+        <div
+          key={project.title}
+          className="relative flex cursor-pointer flex-col rounded-md  shadow-xl "
+          style={{backgroundColor: project.bgColor}}
+          onClick={() => {
+            setState({ isPaneOpen: true });
+            setSelectedProject(project);
+          }}
         >
-          {selectedProject.github}
-        </a>
-      </div>
-
-      {selectedProject.website !== "" && (
-        <div className="flex flex-col gap-5 pt-2">
-          <div className="flex items-center gap-2">
-            <a
-              href={selectedProject.website}
-              target="blank"
-              className="h-auto w-6"
-            >
-              <img src={Website.src} alt="" />
-            </a>
-            <p className="font-semibold">
-              {language == "en" ? "Website" : "Site web"}
-            </p>
+          <ProjectVideo
+            videoSrc={project.video}
+            altText={project.title}
+            placeholderSrc={project.placeholder}
+          />
+          <div className={`bottom-0 flex h-2/6 w-full justify-center items-center gap-1 py-4 md:gap-2 rounded-b-md`}>
+            <InfiniteLooper speed={60} direction="left">
+              {project.technologies.map((technology) => (
+                <div key={technology.text} className="w-full pr-3">
+                  <div
+                    className={`w-full rounded-full text-white ${technology.color} h-fit whitespace-nowrap px-4 py-1 text-xs shadow-sm md:text-sm`}
+                  >
+                    {technology.text}
+                  </div>
+                </div>
+              ))}
+            </InfiniteLooper>
           </div>
-          <a
-            href={selectedProject.website}
-            className="text-gray-500 break-words"
-            target="blank"
-          >
-            {selectedProject.website}
-          </a>
         </div>
-      )}
-    </div>
-  )}
-</SlidingPane>
-
+      ))}
+      <SlidingPane
+        className="some-custom-class max-w-[1080px]"
+        overlayClassName="some-custom-overlay-class"
+        title={language == "en" ? "Go back" : "Retour"}
+        isOpen={state.isPaneOpen}
+        width="80%"
+        onRequestClose={() => {
+          setState({ isPaneOpen: false });
+        }}
+      >
+        {selectedProject && (
+          <div className="flex flex-col gap-10 overflow-y-auto">
+            <div className="flex flex-col gap-5 pt-5">
+              <p className="text-2xl font-semibold">{selectedProject.title}</p>
+              <video controls={false} autoPlay className="rounded-md ">
+                <source src={selectedProject.video} type="video/mp4" />
+              </video>
+            </div>
+            <div className="flex flex-col gap-5">
+              <p className="font-semibold">
+                {language == "en" ? "About" : "À propos"}
+              </p>
+              {language == "en" ? (
+                <p className="break-words">{selectedProject.about}</p>
+              ) : (
+                <p className="break-words">{selectedProject.aboutFr}</p>
+              )}
+            </div>
+            <div className="flex flex-col gap-5">
+              <p className="font-semibold">Technologies</p>
+              <div className="flex w-full flex-wrap gap-3">
+                {selectedProject.technologies.map((technology: any) => (
+                  <div
+                    key={technology.text}
+                    className={`rounded-full text-white ${technology.color} px-4 py-1 text-white shadow-md`}
+                  >
+                    {technology.text}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col gap-5 pt-2">
+              <div className="flex items-center gap-2">
+                <a
+                  href={selectedProject.github}
+                  target="blank"
+                  className="h-auto w-6"
+                >
+                  <img src={Github2.src} alt="" />
+                </a>
+                <p className="font-semibold">Github</p>
+              </div>
+              <a
+                href={selectedProject.github}
+                className="text-gray-500 break-words"
+                target="blank"
+              >
+                {selectedProject.github}
+              </a>
+            </div>
+            {selectedProject.website !== "" && (
+              <div className="flex flex-col gap-5 pt-2">
+                <div className="flex items-center gap-2">
+                  <a
+                    href={selectedProject.website}
+                    target="blank"
+                    className="h-auto w-6"
+                  >
+                    <img src={Website.src} alt="" />
+                  </a>
+                  <p className="font-semibold">
+                    {language == "en" ? "Website" : "Site web"}
+                  </p>
+                </div>
+                <a
+                  href={selectedProject.website}
+                  className="text-gray-500 break-words"
+                  target="blank"
+                >
+                  {selectedProject.website}
+                </a>
+              </div>
+            )}
+          </div>
+        )}
+      </SlidingPane>
     </div>
   );
 };
+
 export default ProjectSection;
