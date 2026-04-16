@@ -746,7 +746,7 @@ export default function Home() {
                       {language == "en" ? (
                         <div className="absolute rounded-lg flex h-full w-full cursor-pointer items-center justify-center bg-custom-purple bg-opacity-5 opacity-0 backdrop-blur-sm transition-all duration-200 ease-in-out hover:opacity-100">
                           <a
-                            href="https://drive.google.com/uc?export=download&id=18YuVwp7r4lx1wWi_g4MyxzsLW4Z3lR3B"
+                            href="https://drive.google.com/uc?export=download&id=1SaMuYqyaX4S64xSViIXqOF01_oQP2eK8"
                             className="btn"
                           >
                             Download CV
@@ -755,7 +755,7 @@ export default function Home() {
                       ) : (
                         <div className="absolute rounded-lg flex h-full w-full cursor-pointer items-center justify-center bg-custom-purple bg-opacity-5 opacity-0 backdrop-blur-sm transition-all duration-200 ease-in-out hover:opacity-100">
                           <a
-                            href="https://drive.google.com/uc?export=download&id=109iyiFUgUV3ZUce001WpB3WYXa2YIwId"
+                            href="https://drive.google.com/uc?export=download&id=1cmBKVDQGJtC7ex7h_rZjePHN0hJBy0cJ"
                             className="btn"
                           >
                             Téléchager CV
